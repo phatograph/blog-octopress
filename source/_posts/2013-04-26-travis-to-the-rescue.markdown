@@ -78,4 +78,4 @@ What this does is it would decrypt the keys, assign them to `$id_rsa_00`, `$id_r
 
 ### Job is done
 
-So far it seems too complex to write a blog. But for me it's fun to figure these things out (and it works). Octopress and friends are cool for me for now. ;)
+So far it seems too complex to write a blog. But for me it's fun to figure these things out (and it works). I have my blog, it's under [version control](https://github.com/phatograph/blog/tree/master), it's [open source](https://github.com/phatograph/blog/), even its own [CI](https://travis-ci.org/phatograph/blog). Octopress and friends are cool for me for now. ;)
