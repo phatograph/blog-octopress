@@ -9,8 +9,8 @@ before_script:
 - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - rake setup_github_pages[$REPO]
 script:
-- yes | bundle exec rake generate
-- yes | bundle exec rake deploy
+- bundle exec rake generate
+- bundle exec rake deploy | $p
 env:
   global:
   - REPO="git@github.com:phatograph/blog.git"
