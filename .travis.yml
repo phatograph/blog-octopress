@@ -10,7 +10,7 @@ before_script:
 - rake setup_github_pages[$REPO]
 script:
 - bundle exec rake generate
-- bundle exec rake deploy | $p
+- $p | bundle exec rake deploy
 env:
   global:
   - REPO="git@github.com:phatograph/blog.git"
@@ -179,8 +179,8 @@ env:
       dCQSaaspMkpvUstc1z6sF3UE5gEycY/vAajrALx7K95fczjUTB+oZfuEQ9t7
 
       FfxNd+KFbC/Z9dh294TTJTbwTCaPQjRp01uqSitgCUZ1sViNLG4='
-  - secure: ! 'GTGjdXkTBEEE6TIVBlFa9ORzxaIENkVSTGGuPHqIrwTYI4aR2XApNc4mQ4fU
+  - secure: ! 'mgUnN+xtWqPk4ufk8Y+RrRuznUREvsoV5bcIS9bGlf4zDM19HJy+7jj5dOHT
 
-      X/SYRoEpmZRJmsqs0CXzfhTOgisJR/wJOhubQCujLbFf05ZYvFChnonjAt5/
+      wv2mu0XiTyZAdCQ4EnyKWx8S8yhw1yp7EteVR3LbduA9bw586TVxqI54UVDm
 
-      uxOIWYpnYe1rP8LoCyZLE7OeUAAGpnfVMjUs9n7vTlnfIN0xrog='
+      TzoApMsZXTj0s4ge+zr1VrjzrnIfa+Mip5LOCNJPgIiNsOUn/xM='
