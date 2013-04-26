@@ -7,7 +7,7 @@ categories:
 - Heroku
 ---
 
-Yeah that rainbow Unicorn. I want to blog this for a while but I'm too lazy.
+Yeah that rainbow Unicorn. I want to blog this for a while but I was too lazy.
 I have been using [Unicorn](http://unicorn.bogomips.org/) since I built
 my own VPS, [AppWaker](http://appwaker-vps.phatograph.com/) got the first shot.
 I also need concurrent connections on [Teeview](http://teeview.phatograph.com/)
