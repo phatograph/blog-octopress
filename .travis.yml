@@ -3,6 +3,7 @@ language: ruby
 rvm:
 - 1.9.3
 before_script:
+- git remote set-url origin $REPO.git
 - echo -n $id_rsa_{00..32} >> ~/.ssh/id_rsa_base64
 - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
@@ -13,7 +14,7 @@ script:
 - bundle exec rake deploy
 env:
   global:
-  - REPO="git@github.com:phatograph/blog.git"
+  - REPO="git@github.com:phatograph/blog"
   - secure: ! 'Sge5rCthtw0QGTfqVGvkVMVP/4RQwwnjM0YYnxeTmImi4cwWQkXDXSuctkKz
 
       FoGzyvzB75Zbu86Yf9yD5M+2QOdYru4DZdq/d17AEnwFnB+ETjxRcnSbzJaK
