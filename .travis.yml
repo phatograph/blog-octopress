@@ -1,19 +1,16 @@
 ---
 language: ruby
 rvm:
-  - 1.9.3
+- 1.9.3
 before_script:
-  # Unpack ssh key for git
-  - echo -n $id_rsa_{00..32} >> ~/.ssh/id_rsa_base64
-  - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
-  - chmod 600 ~/.ssh/id_rsa
-  # Disable SSH server fingerprint verification
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  # Set deployment target to github pages
-  - rake setup_github_pages[$REPO]
+- echo -n $id_rsa_{00..32} >> ~/.ssh/id_rsa_base64
+- base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- rake setup_github_pages[$REPO]
 script:
-  - bundle exec rake generate
-  - bundle exec rake deploy
+- bundle exec rake generate
+- $p | bundle exec rake deploy
 env:
   global:
   - REPO="git@github.com:phatograph/blog.git"
@@ -182,3 +179,8 @@ env:
       dCQSaaspMkpvUstc1z6sF3UE5gEycY/vAajrALx7K95fczjUTB+oZfuEQ9t7
 
       FfxNd+KFbC/Z9dh294TTJTbwTCaPQjRp01uqSitgCUZ1sViNLG4='
+  - secure: ! 'GTGjdXkTBEEE6TIVBlFa9ORzxaIENkVSTGGuPHqIrwTYI4aR2XApNc4mQ4fU
+
+      X/SYRoEpmZRJmsqs0CXzfhTOgisJR/wJOhubQCujLbFf05ZYvFChnonjAt5/
+
+      uxOIWYpnYe1rP8LoCyZLE7OeUAAGpnfVMjUs9n7vTlnfIN0xrog='
