@@ -4,6 +4,7 @@ title: "Travis to the rescue"
 date: 2013-04-26 10:38
 comments: true
 categories:
+- Travis
 ---
 
 One thing I don't like about Octopress it requires too much steps to write a single blog post. You have to:
@@ -47,7 +48,7 @@ Hahaha I know this is horrible. Would have come up with more neat solution somed
 
 Sergey has provided his cool `.travis.yml` for this ritual in his post. I modified it a bit, here is what the file looks like:
 
-```
+``` yaml
 ---
 language: ruby
 rvm:
