@@ -17,7 +17,7 @@ This is insane. 4 steps and terminal is required ? I just want to edit directly 
 
 So [Travis CI](https://travis-ci.org/) crossed my mind. What if I just push changes to `master` and let CI generate and deploy for me. Would be nice. And there is also [prose.io](http://prose.io/) to make writing Markdown fancy.
 
-I tried with my own and I couldn't custom Travis for my needs. So I came across this [post](http://darvin.github.io/blog/2013/01/13/Prose_Octopress_TravisIO/) from Sergey Klimov. This saved my day. I would like to break things down here a bit. Several things are needed for this ritual to work.
+I tried with my own and I couldn't customize Travis for my needs. So I came across this [post](http://darvin.github.io/blog/2013/01/13/Prose_Octopress_TravisIO/) from Sergey Klimov. This saved my day. I would like to break things down here a bit. Several things are needed for this ritual to work.
 
 ### Generating encrypted SSH key for Travis
 
@@ -74,8 +74,8 @@ env:
 
 The rest of the file is the encrypted key from `travis encrypt`, just leave it alone.
 
-What this does is it would decrypt the keys, assign them to `$id_rsa_00`, `$id_rsa_01`, `id_rsa_02` and so on, gather them together in `~/.ssh/id_rsa_base64`. Then run a `base64 --decode --ignore-garbage` to make `~/.ssh/id_rsa`. Now we have our ssh key for Travis to push to GitHub, really nice. The left is just set the path to push, generate, and deploy.
+What this does is it would decrypt the keys, assign them to `$id_rsa_00`, `$id_rsa_01`, `$id_rsa_02` and so on, gather them together in `~/.ssh/id_rsa_base64`. Then run a `base64 --decode --ignore-garbage` to make `~/.ssh/id_rsa`. Now we have our ssh key for Travis to push to GitHub, really nice. The left is just set the path to push, generate, and deploy.
 
 ### Job is done
 
-So far it seems too complex to write a blog. But for me it's fun to figure this things out (and it works). Octopress and friends are cool for me for now. ;)
+So far it seems too complex to write a blog. But for me it's fun to figure these things out (and it works). Octopress and friends are cool for me for now. ;)
