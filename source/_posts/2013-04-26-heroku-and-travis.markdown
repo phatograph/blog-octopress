@@ -43,9 +43,15 @@ This build came up from [many](http://xseignard.github.io/2013/02/18/continuous-
 [posts](http://www.neilmiddleton.com/deploying-to-heroku-from-travis-ci/).
 I would like to thank them all here.
 
-Note at this line:
+The trick is you need to encrypt your Heroku API key.
 
+``` bash bash
+$ travis encrypt HEROKU_API_KEY=<your_heroku_key> --add
 ```
+
+The command would generate a `secure:` property. Another note at this line:
+
+``` yaml .travis.yml
 - if [[ "$TRAVIS_BRANCH" != "master" ]]; then exit 0; fi
 ```
 
