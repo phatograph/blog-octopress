@@ -16,7 +16,7 @@ as well, so I came across some [nice](http://blog.codeship.io/2012/05/06/Unicorn
 
 Here is a sample of the Unicorn configuration:
 
-``` ruby
+``` ruby unicorn.rb
 worker_processes 3
 timeout 600
 preload_app true

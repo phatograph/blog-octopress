@@ -32,7 +32,7 @@ split --bytes=100 --numeric-suffixes --suffix-length=2 --filter="$ENCRYPTION_FIL
 
 Basically (I think) it would encode our `id_rsa` in base64, split each line of them and run `travis encrypt .. --add`, resulting in the encrypted strings are appended to the `.travis.yml`
 
-Unfortunately this doesn't work in my OSX somehow (due to the `split` command). So I just `base64` my `id_rsa`, get that `id_rsa_base64`, open it, and do something like this
+Unfortunately this doesn't work in my OSX somehow (due to the `split` command). So I just `base64` my `id_rsa`, get that `id_rsa_base64`, open it, and do something like this.
 
 ```
 travis encrypt id_rsa_00=LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVE --add
@@ -48,7 +48,7 @@ Hahaha I know this is horrible. Would have come up with more neat solution somed
 
 Sergey has provided his cool `.travis.yml` for this ritual in his post. I modified it a bit, here is what the file looks like:
 
-``` yaml
+``` yaml .travis.yml
 ---
 language: ruby
 rvm:

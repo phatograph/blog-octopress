@@ -18,10 +18,10 @@ So I found this [post](http://superuser.com/questions/227213/what-is-the-easiest
 - At the upper **Service receives** section, select **no input** and **any application**, also check **Output replaces selected text**.
 - Save the service, I named it **Insert Timestamp**.
 
-![img](http://dl.dropboxusercontent.com/s/hg6p2dywe1ck1s5/2556-04-26_at_9.14.04_PM.png)
+{% img center http://dl.dropboxusercontent.com/s/hg6p2dywe1ck1s5/2556-04-26_at_9.14.04_PM.png %}
 
 - Now go to **System Preferences** and **Keyboard**, in the **Keyboard Shortcuts** tab you will find your newly created service within the **Text** dropdown. Check to activate it and assign a keyboard shortcut. I use `cmd + ctrl + shift + D` for my setup.
 
-![img](http://dl.dropboxusercontent.com/s/6khzilblhj473id/2556-04-26_at_9.19.55_PM.png)
+{% img center http://dl.dropboxusercontent.com/s/6khzilblhj473id/2556-04-26_at_9.19.55_PM.png %}
 
 And that's it! Let's enjoy this little handy trick ;)
