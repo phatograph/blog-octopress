@@ -6,4 +6,4 @@ comments: true
 categories:
 ---
 
-Would this work, uh ?
+[Post](http://darvin.github.io/blog/2013/01/13/Prose_Octopress_TravisIO/) from Sergey Klimov.
