@@ -8,10 +8,10 @@ categories:
 
 One thing I don't like about Octopress it requires too much steps to write a single blog post. You have to:
 
-- `rake new_post['Malesuada Ornare Mollis']`
+- Create a new post `rake new_post['Malesuada Ornare Mollis']`
 - Write a content
-- `rake generate`
-- `rake deploy`
+- Generate static files `rake generate`
+- Deploy the generated site `rake deploy`
 
 This is insane. 4 steps and terminal is required ? I just want to edit directly from the browser, and sometimes from Sublime.
 
