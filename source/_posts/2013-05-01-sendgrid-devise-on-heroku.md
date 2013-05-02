@@ -35,7 +35,7 @@ ActionMailer::Base.smtp_settings = {
 }
 ```
 
-### config/initializers/devise.rb
+### devise.rb
 
 From Devise's predefined configuration:
 
