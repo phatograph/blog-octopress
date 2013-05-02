@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "SendGrid + Devise on Heroku"
-date: 2014-05-02 14:41
+date: 2013-05-01 14:41
 comments: true
 categories:
-- heroku
-- devise
+- Heroku
+- Devise
 published: true
 
 ---
