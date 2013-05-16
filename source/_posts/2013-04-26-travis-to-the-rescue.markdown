@@ -25,9 +25,9 @@ I tried with my own and I couldn't customize Travis for my needs. So I came acro
 In order to make this happen, Travis has to hold our GitHub deploy SSH key. The key is needed to be encrypted too. Travis already provides the `travis encrypt` from its gem. Luke Patterson came up with this [gist](https://gist.github.com/lukewpatterson/4242707) to make this easier, allow me to paste a part of it here:
 
 ```
-base64 --wrap=0 ~/.ssh/id_rsa > ~/.ssh/id_rsa_base64
-ENCRYPTION_FILTER="echo \$(echo \"-\")\$(travis encrypt veewee-community/veewee-push \"\$FILE='\`cat $FILE\`'\" | grep secure:)"
-split --bytes=100 --numeric-suffixes --suffix-length=2 --filter="$ENCRYPTION_FILTER" ~/.ssh/id_rsa_base64 id_rsa_
+$ base64 --wrap=0 ~/.ssh/id_rsa > ~/.ssh/id_rsa_base64
+$ ENCRYPTION_FILTER="echo \$(echo \"-\")\$(travis encrypt veewee-community/veewee-push \"\$FILE='\`cat $FILE\`'\" | grep secure:)"
+$ split --bytes=100 --numeric-suffixes --suffix-length=2 --filter="$ENCRYPTION_FILTER" ~/.ssh/id_rsa_base64 id_rsa_
 ```
 
 Basically (I think) it would encode our `id_rsa` in base64, split each line of them and run `travis encrypt .. --add`, resulting in the encrypted strings are appended to the `.travis.yml`
@@ -35,10 +35,10 @@ Basically (I think) it would encode our `id_rsa` in base64, split each line of t
 Unfortunately this doesn't work in my OSX somehow (due to the `split` command). So I just `base64` my `id_rsa`, get that `id_rsa_base64`, open it, and do something like this.
 
 ```
-travis encrypt id_rsa_00=LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVE --add
-travis encrypt id_rsa_01=CkRFSy1JbmZvOiBBRVMtMTI4LUNCQyxFNDQ2OTNEQkMzNjcxOERFNTc5QzQ4MTQyNUExQjg4 --add
-travis encrypt id_rsa_02=OQoKMXhlbEljK2xlVGVNdlVrSUxNRE9LdCtsL1hQZy9VYy9zYXRrNGJUeWVPcnhLMnVmUysz --add
-travis encrypt
+$ travis encrypt id_rsa_00=LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVE --add
+$ travis encrypt id_rsa_01=CkRFSy1JbmZvOiBBRVMtMTI4LUNCQyxFNDQ2OTNEQkMzNjcxOERFNTc5QzQ4MTQyNUExQjg4 --add
+$ travis encrypt id_rsa_02=OQoKMXhlbEljK2xlVGVNdlVrSUxNRE9LdCtsL1hQZy9VYy9zYXRrNGJUeWVPcnhLMnVmUysz --add
+$ travis encrypt
 ...
 ```
 
