@@ -37,7 +37,7 @@ in those things. Working along great comrades sharing stuff we all interested.
 It has been and is always my dream to create a 'cool' and 'awesome' things
 using new technologies.
 
-Screw it. Let me try this again.
+Screw it. Let me try [this](http://th.linkedin.com/in/phatograph) again.
 
     I am web a developer. Here are what I do on my weekdays,
     some also happens on weekends.
@@ -70,3 +70,8 @@ Screw it. Let me try this again.
     Let's talk about non-techinal stuffs. I'm a poor guitarist.
     Sometimes a photograher, a MF lover. I love playing soccer,
     table tennis, swimming, and also have a humble archery skill.
+
+Obviously this would again become outdated soon or later.
+Just want to put a milestone here that once I have slightly grown up.
+And see things in a bit different perspective, wider, deeper.
+Still a long and happy way to go from now.
