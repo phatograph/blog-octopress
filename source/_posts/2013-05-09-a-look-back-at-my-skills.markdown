@@ -6,9 +6,18 @@ comments: true
 categories:
 ---
 
-Ahh, editors, a wand of developers. I have use several of them since I began
+Well, I intended to write this post just about editors I have been using
+or had used before. But it went more like my whole skill, so I changed
+the topic /facepalm.
+
+Speaking about editors, a wand of developers. I have use several of them since I began
 my job as a coder. Some are complex IDE, some are simple text editors. Let's
 take some years back.
+
+### TL;DR
+
+    Skills: HTML, CSS + SASS, ASP.net, PHP, JS + CS, Node, RoR.
+    Editors: Netbeans, VS2008-12, Sublime, Vim.
 
 > PS. For those who might wonder wtf these section headers are,
 I try to map my lifetime with my favourite childhood
