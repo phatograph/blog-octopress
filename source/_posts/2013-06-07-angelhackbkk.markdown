@@ -10,7 +10,7 @@ categories:
   <img src="https://dl.dropbox.com/s/u9oyjchsyxpkcpf/2556-06-07_at_4.25.32_PM.png" style="max-width: 500px" />
 </p>
 
-I had a change to attend a first time [Angelhack in Bangkok](http://www.hackathon.io/angelhack39)
+I had a change to attend a first time [AngelHack in Bangkok](http://www.hackathon.io/angelhack39)
 arranged on [Sat 1 to Sun 2, June 2013](http://www.hackathon.io/angelhack39/schedules),
 at the Bangkok University (Kluaynamthai campus).
 It was a fun event. Many developers, designers and businesspersons
@@ -30,7 +30,7 @@ a chance to pitch to audiences. Each team has 2 (eh, or 4 ?) minutes to talk.
 There were 5-6 teams did the pitch. One of them has a very interesting idea,
 they would like to create a location-based money tracking app.
 
-<blockquote class="twitter-tweet"><p><a href="https://twitter.com/search/%23AngelHackBKK">#AngelHackBKK</a> pitched my checkin expense tracking idea.Join me anyone?</p>&mdash; Bryan (@_bjb) <a href="https://twitter.com/_bjb/status/340693380277342208">June 1, 2013</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p><a href="https://twitter.com/search/%23AngelHackBKK">#AngelHackBKK</a> pitched my checkin expense tracking idea.Join me anyone?</p>&mdash; Bryan (@_bjb) <a href="https://twitter.com/_bjb/status/340693380277342208">June 1, 2013</a></blockquote><script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Along with the pitching there were minigames awarding sponsored prices
 (Nerf guns, rubrics, geeky stuffs). I didn't pitch since I thought
