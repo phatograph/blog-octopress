@@ -7,10 +7,10 @@ categories:
 ---
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/u9oyjchsyxpkcpf/2556-06-07_at_4.25.32_PM.png" style="max-width: 500px" />
+  <img src="https://dl.dropbox.com/s/u9oyjchsyxpkcpf/2556-06-07_at_4.25.32_PM.png" style="width: 500px" />
 </p>
 
-I had a change to attend a first time [AngelHack in Bangkok](http://www.hackathon.io/angelhack39)
+I had a chance to attend a first time [AngelHack in Bangkok](http://www.hackathon.io/angelhack39)
 arranged on [Sat 1 to Sun 2, June 2013](http://www.hackathon.io/angelhack39/schedules),
 at the Bangkok University (Kluaynamthai campus).
 It was a fun event. Many developers, designers and businesspersons
@@ -32,7 +32,7 @@ they would like to create a location-based money tracking app.
 
 <blockquote class="twitter-tweet"><p><a href="https://twitter.com/search/%23AngelHackBKK">#AngelHackBKK</a> pitched my checkin expense tracking idea.Join me anyone?</p>&mdash; Bryan (@_bjb) <a href="https://twitter.com/_bjb/status/340693380277342208">June 1, 2013</a></blockquote><script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Along with the pitching there were minigames awarding sponsored prices
+Along with the pitching there were minigames awarding fun prices
 (Nerf guns, rubrics, geeky stuffs). I didn't pitch since I thought
 I would go for it by myself. But it always fun to watch.
 
@@ -58,13 +58,13 @@ a sponsor talk session from a Blackberry guy but I didn't join.
 Too busy on coding.
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/b60w3cmj8pc61yu/2556-06-07_at_6.12.52_PM.png" style="max-width: 500px" />
+  <img src="https://dl.dropbox.com/s/b60w3cmj8pc61yu/2556-06-07_at_6.12.52_PM.png" style="width: 500px" />
 </p>
 
 We worked really hard.
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/woxz928mwnc5x5a/2556-06-07_at_6.15.49_PM.png" style="max-width: 500px" />
+  <img src="https://dl.dropbox.com/s/woxz928mwnc5x5a/2556-06-07_at_6.15.49_PM.png" style="width: 500px" />
 </p>
 
 ### The Facilities
@@ -76,7 +76,7 @@ to hack). The facilities were awesome, we have 3 rooms available for
 We were coding at the lounge.
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/qmehakdd79qtrew/2556-06-07_at_6.22.30_PM.png" style="max-width: 500px" />
+  <img src="https://dl.dropbox.com/s/qmehakdd79qtrew/2556-06-07_at_6.22.30_PM.png" style="width: 500px" />
 </p>
 
 One thing to note here is if you want to stay over night. Please
@@ -94,7 +94,7 @@ for goods at __twitmap.herokuapp.com__ (later I mapped her to
 [twitmap.phatograph.com](twitmap.phatograph.com))
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/2ifgjqa8votdmnz/2556-06-07_at_6.39.40_PM.png" style="max-width: 500px" />
+  <img src="https://dl.dropbox.com/s/2ifgjqa8votdmnz/2556-06-07_at_6.39.40_PM.png" style="width: 500px" />
 </p>
 
 Here's how we worked, the larger the black circle is the higher amount
@@ -128,18 +128,18 @@ ended just right when Twitmap reached the Internet.
 
 The event itself was well arranged, interesting and fun,
 but surely has a way to go forward. IMHO it would be nice if
-there could be more technical session and presentation. Only couple
+there were more technical sessions and presentation. Only couple of
 projects were presented to the audiences, would be great if
 we could know them all, but that takes time.
 Perhaps it would be nice if the event would be expanded to Fri-Sun.
 We would have more room for cool things.
 
-There're also sponsored prince, for example this time Google Developer
+There're also sponsored prices, for example, this time Google Developer
 offered an awesome price and it wasn't related to the grand price.
 So if you plan to win these sponsored ones. Building the apps
-that focus on their services give you a better shot.
+that focus on their services gives you a better shot.
 
-And to remind myself, for the limited working time like this
+And to remind myself, for the limited working time like this,
 planning is very important. Sky is not a limit but your stamina is.
 I constantly coded for 10 hours and went exhausted (beers could help here ;) for real).
 If you plan for a big thing you may not be able to make it. Focus on the main
