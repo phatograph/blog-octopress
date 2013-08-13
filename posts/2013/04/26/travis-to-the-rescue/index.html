@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Travis to the rescue - phato.blog</title>
+  <meta name="author" content="Phat Wangrungarun">
+
+  
+  <meta name="description" content="One thing I don&#8217;t like about Octopress it requires too much steps to write a single blog post. You have to: Create a new post rake new_post[' &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue">
+  <link href="/blog-octopress/favicon.png" rel="icon">
+  <link href="/blog-octopress/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog-octopress/atom.xml" rel="alternate" title="phato.blog" type="application/atom+xml">
+  <script src="/blog-octopress/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/blog-octopress/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15209814-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1>
+    <a href="/blog-octopress/">phato.blog</a>
+    <a href="https://travis-ci.org/phatograph/blog-octopress" target="_blank">
+      <img src="https://travis-ci.org/phatograph/blog-octopress.png" alt="travis" style="margin-left: 5px;" />
+    </a>
+  </h1>
+  
+    <h2>nothingish ;)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/blog-octopress/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:phatograph.github.io/blog-octopress" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/blog-octopress/">Home</a></li>
+  <li><a href="/blog-octopress/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Travis to the Rescue</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-26T10:38:00+00:00" pubdate data-updated="true">Apr 26<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>One thing I don&#8217;t like about Octopress it requires too much steps to write a single blog post. You have to:</p>
+
+<ul>
+<li>Create a new post <code>rake new_post['Malesuada Ornare Mollis']</code></li>
+<li>Write a content</li>
+<li>Generate static files <code>rake generate</code></li>
+<li>Deploy the generated site <code>rake deploy</code></li>
+</ul>
+
+
+<p>This is insane. 4 steps and terminal is required ? I just want to edit directly from the browser, and sometimes from Sublime.</p>
+
+<p>So <a href="https://travis-ci.org/">Travis CI</a> crossed my mind. What if I just push changes to <code>master</code> and let CI generate and deploy for me. Would be nice. And there is also <a href="http://prose.io/">prose.io</a> to make writing Markdown fancy.</p>
+
+<p>I tried with my own and I couldn&#8217;t customize Travis for my needs. So I came across this <a href="http://darvin.github.io/blog/2013/01/13/Prose_Octopress_TravisIO/">post</a> from Sergey Klimov. This saved my day. I would like to break things down here a bit. Several things are needed for this ritual to work.</p>
+
+<h3>Generating encrypted SSH key for Travis</h3>
+
+<p>In order to make this happen, Travis has to hold our GitHub deploy SSH key. The key is needed to be encrypted too. Travis already provides the <code>travis encrypt</code> from its gem. Luke Patterson came up with this <a href="https://gist.github.com/lukewpatterson/4242707">gist</a> to make this easier, allow me to paste a part of it here:</p>
+
+<p>One thing, the SSH must not have the passphrase, Travis won&#8217;t be able to enter it via the prompt.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ base64 --wrap=0 ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa_base64
+</span><span class='line'>$ ENCRYPTION_FILTER="echo \$(echo \"-\")\$(travis encrypt veewee-community/veewee-push \"\$FILE='\`cat $FILE\`'\" | grep secure:)"
+</span><span class='line'>$ split --bytes=100 --numeric-suffixes --suffix-length=2 --filter="$ENCRYPTION_FILTER" ~/.ssh/id_rsa_base64 id_rsa_</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Basically (I think) it would encode our <code>id_rsa</code> in base64, split each line of them and run <code>travis encrypt .. --add</code>, resulting in the encrypted strings are appended to the <code>.travis.yml</code></p>
+
+<p>Unfortunately this doesn&#8217;t work in my OSX somehow (due to the <code>split</code> command). So I just <code>base64</code> my <code>id_rsa</code>, get that <code>id_rsa_base64</code>, open it, and do something like this.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ travis encrypt id_rsa_00=LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVE --add
+</span><span class='line'>$ travis encrypt id_rsa_01=CkRFSy1JbmZvOiBBRVMtMTI4LUNCQyxFNDQ2OTNEQkMzNjcxOERFNTc5QzQ4MTQyNUExQjg4 --add
+</span><span class='line'>$ travis encrypt id_rsa_02=OQoKMXhlbEljK2xlVGVNdlVrSUxNRE9LdCtsL1hQZy9VYy9zYXRrNGJUeWVPcnhLMnVmUysz --add
+</span><span class='line'>$ travis encrypt
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hahaha I know this is horrible. Would have come up with more neat solution someday. For now I just paste those line in my terminal, then I have my encrypted key appended in <code>.travis.yml</code>.</p>
+
+<p>Another thing to note is this encrypted key is for per-repo. You may to run those <code>travis encrypt</code> separately for each repository.</p>
+
+<h3>The <code>.travis.yml</code> itself</h3>
+
+<p>Sergey has provided his cool <code>.travis.yml</code> for this ritual in his post. I modified it a bit, here is what the file looks like:</p>
+
+<figure class='code'><figcaption><span>.travis.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ruby</span>
+</span><span class='line'><span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
+</span><span class='line'><span class="l-Scalar-Plain">before_script</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git remote set-url origin $REPO.git</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git config --global user.email &quot;phatograph@gmail.com&quot;</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git config --global user.name &quot;Phat Wangrungarun (via TravisCI)&quot;</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo -n $id_rsa_{00..32} &gt;&gt; ~/.ssh/id_rsa_base64</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 &gt; ~/.ssh/id_rsa</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">chmod 600 ~/.ssh/id_rsa</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo -e &quot;Host github.com\n\tStrictHostKeyChecking no\n&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">rake setup_github_pages[$REPO]</span>
+</span><span class='line'><span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">bundle exec rake generate</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">bundle exec rake deploy</span>
+</span><span class='line'><span class="l-Scalar-Plain">env</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">global</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">REPO=&quot;git@github.com:phatograph/blog&quot;</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">secure</span><span class="p-Indicator">:</span> <span class="kt">!</span> <span class="s">&#39;Sge5rCthtw0QGTfqVGvkVMVP/4RQwwnjM0YYnxeTmImi4cwWQkXDXSuctkKz</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="s">FoGzyvzB75Zbu86Yf9yD5M+2QOdYru4DZdq/d17AEnwFnB+ETjxRcnSbzJaK</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The rest of the file is the encrypted key from <code>travis encrypt</code>, just leave it alone.</p>
+
+<p>What this does is it would decrypt the keys, assign them to <code>$id_rsa_00</code>, <code>$id_rsa_01</code>, <code>$id_rsa_02</code> and so on, gather them together in <code>~/.ssh/id_rsa_base64</code>. Then run a <code>base64 --decode --ignore-garbage</code> to make <code>~/.ssh/id_rsa</code>. Now we have our ssh key for Travis to push to GitHub, really nice. The left is just set the path to push, generate, and deploy.</p>
+
+<h3>Job is done</h3>
+
+<p>So far it seems too complex to write a blog. But for me it&#8217;s fun to figure these things out (and it works). I have my blog, it&#8217;s under <a href="https://github.com/phatograph/blog/tree/master">version control</a>, it&#8217;s <a href="https://github.com/phatograph/blog/">open source</a>, even its own <a href="https://travis-ci.org/phatograph/blog">CI</a>. Octopress and friends are cool for me for now. ;)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Phat Wangrungarun</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-26T10:38:00+00:00" pubdate data-updated="true">Apr 26<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog-octopress/posts/categories/travis/'>Travis</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue/" data-via="phatograph" data-counturl="http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog-octopress/posts/2013/04/25/hello-octopress/" title="Previous Post: Hello Octopress">&laquo; Hello Octopress</a>
+      
+      
+        <a class="basic-alignment right" href="/blog-octopress/posts/2013/04/26/heroku-and-unicorn/" title="Next Post: Heroku and Unicorn">Heroku and Unicorn &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/06/07/angelhackbkk/">#AngelHackBKK</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/26/my-old-summaries-on-my-resume/">My (Old) Summaries on my Resume</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/09/a-look-back-at-my-skills/">A Look Back at my Skills</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development/">Devise user confirmation testing in development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku/">SendGrid + Devise on Heroku</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/phatograph">@phatograph</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/blog/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'phatograph',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/blog-octopress/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/109629495831794243165?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Phat Wangrungarun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'phatoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue/';
+        var disqus_url = 'http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

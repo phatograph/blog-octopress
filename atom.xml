@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[phato.blog]]></title>
+  <link href="http://phatograph.github.io/blog-octopress/atom.xml" rel="self"/>
+  <link href="http://phatograph.github.io/blog-octopress/"/>
+  <updated>2013-08-13T08:12:00+00:00</updated>
+  <id>http://phatograph.github.io/blog-octopress/</id>
+  <author>
+    <name><![CDATA[Phat Wangrungarun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[#AngelHackBKK]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/06/07/angelhackbkk/"/>
+    <updated>2013-06-07T15:30:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/06/07/angelhackbkk</id>
+    <content type="html"><![CDATA[<p style="text-align: center;">
+  <img src="https://dl.dropbox.com/s/u9oyjchsyxpkcpf/2556-06-07_at_4.25.32_PM.png" style="width: 500px" />
+</p>
+
+
+<p>I had a chance to attend a first time <a href="http://www.hackathon.io/angelhack39">AngelHack in Bangkok</a>
+arranged on <a href="http://www.hackathon.io/angelhack39/schedules">Sat 1 to Sun 2, June 2013</a>,
+at the Bangkok University (Kluaynamthai campus).
+It was a fun event. Many developers, designers and businesspersons
+came to the event, around 70% are Thai and the rest are foreigners.</p>
+
+<p>I got there around 10AM. People were still coming and registering.
+Things then quite went along according to the <a href="http://www.hackathon.io/angelhack39/schedules">schedule</a>.</p>
+
+<h3>The Pitching</h3>
+
+<p style="text-align: center;">
+  <img src="https://dl.dropbox.com/s/ri307x4d8dw50et/2556-06-07_at_4.32.27_PM.png" />
+</p>
+
+
+<p>Teams that want to present themselves or need more members had
+a chance to pitch to audiences. Each team has 2 (eh, or 4 ?) minutes to talk.
+There were 5-6 teams did the pitch. One of them has a very interesting idea,
+they would like to create a location-based money tracking app.</p>
+
+<blockquote class="twitter-tweet"><p><a href="https://twitter.com/search/%23AngelHackBKK">#AngelHackBKK</a> pitched my checkin expense tracking idea.Join me anyone?</p>&mdash; Bryan (@_bjb) <a href="https://twitter.com/_bjb/status/340693380277342208">June 1, 2013</a></blockquote>
+
+
+<script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>Along with the pitching there were minigames awarding fun prices
+(Nerf guns, rubrics, geeky stuffs). I didn&#8217;t pitch since I thought
+I would go for it by myself. But it always fun to watch.</p>
+
+<p>After the pitching lunch was served. And the hackaton silently began.</p>
+
+<h3>The Project</h3>
+
+<p>What I wanted to hack on is a web application that can search for
+tweets nearby by a keyword. It would be nice if we could get tweets
+that people are talking about traffic jam or raining. We
+could know these event&#8217;s locations. I named it <a href="http://www.hackathon.io/twitmap">Twitmap</a>.</p>
+
+<p>I did some planning before. I would go for a Rails apps. Nice ol&#8217; friend <a href="http://hpneo.github.io/gmaps/">Gmap.js</a>
+for handling the Google Maps. And I would like to write my own Twitter API
+wrapper class (later I named it <a href="https://github.com/phatograph/twitmap/blob/master/app/models/poorman_twitter.rb">Poor man&#8217;s Twitter</a>).
+<a href="https://github.com/phatograph/twitmap/blob/master/Gemfile">Other stuffs</a> are quite general.
+All I need was just bring them on together and typing. Luckily
+I got a company, <a href="https://github.com/rhearnorth">@rhearnorth</a> was
+helping me tackling down Twitmap. It was very nice working with him ;)</p>
+
+<p>From Saturday 1PM we hackers begun each project. There was also
+a sponsor talk session from a Blackberry guy but I didn&#8217;t join.
+Too busy on coding.</p>
+
+<p style="text-align: center;">
+  <img src="https://dl.dropbox.com/s/b60w3cmj8pc61yu/2556-06-07_at_6.12.52_PM.png" style="width: 500px" />
+</p>
+
+
+<p>We worked really hard.</p>
+
+<p style="text-align: center;">
+  <img src="https://dl.dropbox.com/s/woxz928mwnc5x5a/2556-06-07_at_6.15.49_PM.png" style="width: 500px" />
+</p>
+
+
+<h3>The Facilities</h3>
+
+<p>The event was arranged at BU&#8217;s Gallery (BUG building, really nice place
+to hack). The facilities were awesome, we have 3 rooms available for
+24 hours, they were suppose to be a lounge at the 5th floor
+(that&#8217;s where gunfires happened), a lecture room and .. a theatre, on 6th floor.
+We were coding at the lounge.</p>
+
+<p style="text-align: center;">
+  <img src="https://dl.dropbox.com/s/qmehakdd79qtrew/2556-06-07_at_6.22.30_PM.png" style="width: 500px" />
+</p>
+
+
+<p>One thing to note here is if you want to stay over night. Please
+bring a sleeping bag or a blanket. BUG is painfully cold at night.
+Moreover, despite a fact that BU is a University, I&#8217;d say that
+BUG 5th floor has a perfect balcony to drink beers.</p>
+
+<p>Oh, yes, food&#8217;s great too. Even they&#8217;re lunchboxes but ther&#8217;re
+really great ;)</p>
+
+<h3>The Debate</h3>
+
+<p>After 14+ hours of work, Twitmap has been launched to the internet
+for goods at <strong>twitmap.herokuapp.com</strong> (later I mapped her to
+<a href="twitmap.phatograph.com">twitmap.phatograph.com</a>)</p>
+
+<p style="text-align: center;">
+  <img src="https://dl.dropbox.com/s/2ifgjqa8votdmnz/2556-06-07_at_6.39.40_PM.png" style="width: 500px" />
+</p>
+
+
+<p>Here&#8217;s how we worked, the larger the black circle is the higher amount
+of commits.</p>
+
+<p style="text-align: center;">
+  <img src="https://dl.dropbox.com/s/kxqo5n2qft174u5/2556-06-07_at_6.41.57_PM.png" />
+</p>
+
+
+<p>And there came a presentation. There were 7 judges from different
+IT company and startups, both Thais and foreigners. The judges were
+separated into 3 groups. Each team had to present to each group of judges,
+4 minutes for each presentation. Each group of judges would pick
+one team to compete in a final round. So there would be 3 teams presenting
+to all audiences in the final.</p>
+
+<p>To be honest we didn&#8217;t prepare any presentation. And Twitmap herself
+wasn&#8217;t designed to grow any business. So we did quite a weird
+and awkward presentation. Basically what every judge asked about
+are quite the same. Here&#8217;re what we were asked about:</p>
+
+<ul>
+<li>How do you make money from this</li>
+<li>How to grow a project</li>
+<li>Mobile support</li>
+</ul>
+
+
+<p>Obviously we didn&#8217;t make to the final round. And I&#8217;m sorry to tell
+that I couldn&#8217;t remember any much thing at the end. For me the hacking
+ended just right when Twitmap reached the Internet.</p>
+
+<h3>Final Thoughts</h3>
+
+<p>The event itself was well arranged, interesting and fun,
+but surely has a way to go forward. IMHO it would be nice if
+there were more technical sessions and presentation. Only couple of
+projects were presented to the audiences, would be great if
+we could know them all, but that takes time.
+Perhaps it would be nice if the event would be expanded to Fri-Sun.
+We would have more room for cool things.</p>
+
+<p>There&#8217;re also sponsored prices, for example, this time Google Developer
+offered an awesome price and it wasn&#8217;t related to the grand price.
+So if you plan to win these sponsored ones. Building the apps
+that focus on their services gives you a better shot.</p>
+
+<p>And to remind myself, for the limited working time like this,
+planning is very important. Sky is not a limit but your stamina is.
+I constantly coded for 10 hours and went exhausted (beers could help here ;) for real).
+If you plan for a big thing you may not be able to make it. Focus on the main
+feature, the rest are bonus.</p>
+
+<p>Well, to sum up, a nice event, great facilities and support thanks to BU staff,
+awesome people all around. Thanks to everybody making this happen.
+I would definitely join #AngelHackBKK at the end of this year
+if I had a chance :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My (Old) Summaries on my Resume]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/05/26/my-old-summaries-on-my-resume/"/>
+    <updated>2013-05-26T01:20:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/05/26/my-old-summaries-on-my-resume</id>
+    <content type="html"><![CDATA[<p>After I <a href="http://phatograph.github.io/blog-octopress/posts/2013/05/09/a-look-back-at-my-skills/">looked back</a> at my skills,
+I decided to rewrite my summary on my resume. I read it and had a feeling that
+it seemes like a new-grad essay, very innocent. Here is what it was:</p>
+
+<blockquote><p>I have started my career life as a web developer just before I&#8217;ve graduated,
+beginning with HTML and CSS. At my very first stage I&#8217;ve read many tutorials,
+articles and blog posts, digging into some CSS frameworks e.g. Blueprint and 960gs.
+So I&#8217;ve started to put myself in standards and best practices, and Cross-Browser
+implementation has become my specialty since then.</p>
+
+<p>Joining my first company gave me an opportunity to work with real programming languages
+e.g. ASP.net C# and PHP, also JavaScript and jQuery. My role was a pure Frontend developer then.</p>
+
+<p>At my second company I had chance to work in a huge team, there are many processes
+and documents. Agile methodology is applied to the team. I&#8217;ve become
+a Software Engineer more than just a Frontend guy. ASP.net C# is still a dominant languages.</p>
+
+<p>Meanwhile, for my own project, I&#8217;ve focused on JavaScipt techniques and theories,
+both client and server side. I have been impressed by Node.js and used it
+to create some tiny website along with CouchDB. I was fascinated by
+open-source communities, various framework, serious ones, micro ones,
+and the world of open API. I love these stuff.</p>
+
+<p>Lately I&#8217;ve been interested in Rails, together with Rspec, Capybara and Guard
+to create an application with automated BDD testing.</p>
+
+<p>From now on, I wish I could have a chance to contribute and be involved
+in those things. Working along great comrades sharing stuff we all interested.
+It has been and is always my dream to create a &#8216;cool&#8217; and &#8216;awesome&#8217; things
+using new technologies.</p></blockquote>
+
+<p>Screw it. Let me try <a href="http://th.linkedin.com/in/phatograph">this</a> again.</p>
+
+<pre><code>I am web a developer. Here are what I do on my weekdays,
+some also happens on weekends.
+
+Wake up. Read overnight emails, mostly are some newsletters
+or issue/PR comments.
+
+Breakfast, drive to work, watch some screencast or read some feed
+from a phone, or just facebook if too lazy.
+
+Arrive at my desk, continue a task, or grab a new one from
+an issue tracker. Fix/comment on a Pull Request.
+Discuss about ongoing issues. Implement the task, most of the time
+this would be Rails thingies. I prefer frontend tasks
+but also happy with backend stuff too.
+
+Ship the code with unit tests and a nice code coverage.
+It the would be strictly reviewed and commented by the gatekeepers.
+Chat/help/being helped from friends if there is any problem.
+Manage the code along with friends' branches, merge/rebase if needed.
+
+Read some feed, blog posts, screencasts, while waiting a PR review,
+or while having lunch. Regenerate power by playing Eight-ball games.
+Get some table tennis matches after work.
+
+After the office hours, if I'm not playing FIFA I would be doing
+some freelance works or some personal projects.
+Could be Rails/Node/PHP/.NET, depends.
+
+Let's talk about non-techinal stuffs. I'm a poor guitarist.
+Sometimes a photograher, a MF lover. I love playing soccer,
+table tennis, swimming, and also have a humble archery skill.
+</code></pre>
+
+<p>Obviously this would again become outdated soon or later.
+Just want to put a milestone here that once I have slightly grown up.
+And see things in a bit different perspective, wider, deeper.
+Still a long and happy way to go from now.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Look Back at my Skills]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/05/09/a-look-back-at-my-skills/"/>
+    <updated>2013-05-09T11:44:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/05/09/a-look-back-at-my-skills</id>
+    <content type="html"><![CDATA[<p>Well, I intended to write this post just about editors I have been using
+or had used before. But it went more like my whole skill, so I changed
+the topic /facepalm.</p>
+
+<p>Speaking about editors, a wand of developers. I have use several of them since I began
+my job as a coder. Some are complex IDE, some are simple text editors. Let&#8217;s
+take some years back.</p>
+
+<h3>TL;DR</h3>
+
+<pre><code>Skills: HTML, CSS + SASS, ASP.net, PHP, JS + CS, Node, RoR.
+Editors: Netbeans, VS2008-12, Sublime, Vim.
+</code></pre>
+
+<blockquote><p>PS. For those who might wonder wtf these section headers are,
+I try to map my lifetime with my favourite childhood
+<a href="http://www.essentialmagic.com/CARDSETS/Default.asp">card game</a> ;)</p></blockquote>
+
+<h3>The Dark</h3>
+
+<p>I didn&#8217;t code anything when I was in highschool. I didn&#8217;t understand coding
+at all. There was a computer class by then assigned me some Pascal homework
+(I think It was Pascal .. can&#8217;t really remember) and some very basic HTML without
+any CSS.</p>
+
+<p>Before I chose my major as Computer Science I was confusing between an archtect,
+an engineer, even a dentist. That time I was playing a MMORPG game and I was
+introduced a botting system (that was evil .. I&#8217;m sorry).
+I started configure some script and loved it.
+So I chose this CS major. Until this day, I know by myself I didn&#8217;t make a
+wrong choice ;)</p>
+
+<h3>Ice Age</h3>
+
+<p>Ahh once a CS freshies. In the first year there was a programming class
+coding some <strong>C</strong> basics using <a href="http://www.cs.virginia.edu/~lcc-win32/">LCC-win32</a>
+and I think that was my first IDE. I didn&#8217;t understand anything,
+syntax ? compiling ? <code>int void main()</code> ? Everything seemed to be too scary.</p>
+
+<p>The next language was <strong>Java</strong> using <a href="https://netbeans.org/">Netbeans</a>
+5 or 6 I guess, first met with OOP. Even I could perform in the exam quite well,
+I still didn&#8217;t really understand what programming is.</p>
+
+<h3>Coldsnap</h3>
+
+<p>Later years in CS there was a Computer System class and I had a chance
+to write some <strong>Assembly</strong> scripts, but I totally forget the tools I used.
+Same as tools for OS, AI, Logic and Functional Programming classes,
+I remember once I wrote <strong>Haskell</strong> and <strong>Lisp</strong>, but don&#8217;t know how.
+Netbeans was still there used to write Java applets in Computer Graphics class.</p>
+
+<p>I did my senior project in Computer Vision field using <a href="http://www.mathworks.com/products/matlab/">Matlab</a>.
+That was really weird for me right now, as a Web Developer.
+Since then I havn&#8217;t had a chance to work in this field anymore, and I&#8217;m happy with that.</p>
+
+<h3>Tempest</h3>
+
+<p>I was graduated! But sadly I couldn&#8217;t write any solid usable program.
+So I applied for a doctoral scholarship. (Un?)fortunately I was rejected
+and become lost. At that time my friend @chakrit and some others were working
+at the startup company. Thus he invited me to join.</p>
+
+<p>I was taught to write some basic frontend before, so I became a frontend guy
+at the company.</p>
+
+<p>My life with web development has begun by then.</p>
+
+<p>.. And also my relationship with M$ Visual Studio, 2008 by that time.</p>
+
+<h3>Stronghold</h3>
+
+<p>At the time being, grid-based <strong>CSS</strong> frameworks were becoming polular.
+I studied <a href="http://www.blueprintcss.org/">Blueprint</a> and tried to understand
+the idea. And based on that, I created my very first framework,
+the <a href="https://github.com/phatograph/draftsman">Draftsman</a>&#8217;s grid.
+I have learnt most of my skills from <a href="net.tutsplus.com">Nettuts</a>,
+<a href="http://davidwalsh.name/">David Walsh</a>, <a href="http://chriscoyier.net/">Chris Coyier</a>
+and other blogs as well.</p>
+
+<p>Apart from <strong>ASP.net MVC (C#)</strong> (beta or 1) projects, which were company&#8217;s cores,
+I also responsibled in some <strong>PHP</strong> projects. I used <a href="http://ellislab.com/codeigniter">CodeIgniter</a>
+in Netbeans for PHP and it worked great, though quite slow but acceptable.</p>
+
+<h3>Saga</h3>
+
+<p>After a year I left my first company and joined a bigger one, much bigger.
+I was still a frontend guy but this time the UI team I was in use
+<strong>ASP.net WebForm</strong>.</p>
+
+<p>Couple of months passed and the company upgraded VS
+from 2008 to 2010. Seriously, I had hard times with the IDE since
+the solution was very huge and complex, and my machine got only 2Gb RAM.
+VS2010 usually hangs up and crashed when I started multitasking.
+Things got slightly better when boosted up to 4Gb (whlist WinXP could
+only use 3.xGb) but sometimes with 3+ times hang-in-a-row I just
+want to throw something.</p>
+
+<p>Meanwhile I became interested in <strong>JavaScript</strong> much more. I had been written
+some <strong>jQuery</strong> since first company. But in the project it used <strong>Prototype.js</strong>,
+some RC or beta version. I upgraded it to 1.7.x and learnt some lessons
+along the way. I found out that, for me, many JS fundamental were hard
+to understand and remember, so I started <a href="http://blog.phatograph.com/index.php/tag/javascript/">blogging</a>
+about them.</p>
+
+<p>Blogging has become really helpful for me since then.</p>
+
+<h3>Destiny</h3>
+
+<p>I decided to bought myself my first <a href="http://support.apple.com/kb/sp619">Macbook</a>.
+The reason was because I had been reading articles about JavaScript
+and discovered <strong>Node.js</strong>. I really wanted to try them out. At when I was diciding to buy
+it turned out my sister needed a laptop for her homework, so I gave her
+my <a href="http://shop.lenovo.com/us/laptops/ideapad/y-series/y450">old one</a> and
+bought the beloved Macbook. And began to fall in love with Unix.</p>
+
+<p>After Node.js I wanted to try our more things. What is NoSQL ? Just try it,
+MongoDB, CouchDB. <strong>CoffeeScript</strong> ? Sounds nice, try it. I wrote some simple <strong>Django</strong>
+and <strong>Ruby on Rails</strong> projects. At that time I heard about a company
+hiring a Rails guy, I was interested, and got myself deeper in Rails.</p>
+
+<p>Gah I totally forget about Editors.
+One stupid reason for me to but a Mac is I wanted to use TextMate.
+I tried it trial, nice, and swtich to Coda, hmm quite well too. But
+I don&#8217;t want to pay for a license. Then there was Sublime 2, which
+I thought its package management is really awesome. So it became my
+main editor in OSX.</p>
+
+<h3>Invasion</h3>
+
+<p>Three years with ASP.net C#, I decided to leave it.
+I joined the Rails company and became much more serious about Rails,
+and the web technologies.</p>
+
+<p>So much things to learn everyday, <a href="heroku.com">Heroku</a> is my hosting choice
+also with self-managed VPS on <a href="digitalocean.com">DigitalOcean</a>.
+CI service by <a href="travis-ci.org/">TravisCI</a>, special thanks for deploying this
+blog!</p>
+
+<p>I have become more familiar and prefer <strong>Git</strong> and Version Control system
+(I also prefer GUI based with <a href="http://sourcetreeapp.com/">SourceTree</a>.
+<strong>SVN</strong> is also fine, if I have to.
+I use BitBucket for private projects, GitHub for open sources, and
+<a href="https://unfuddle.com/">Unfuddle</a> for SVN.</p>
+
+<p>Since I have a good feeling with console using <a href="http://www.iterm2.com/">iTerm2</a>,
+one crazy day I forced myself to drop Sublime and began using Vim. I want
+to use it for a long time but I couldn&#8217;t, always fell asleep when reading tutorials.
+This time I tried to use it in a daily processes. With a help from
+my genius friend @chakrit I slowly get used to it more and more.
+Now I even have my own <a href="https://github.com/phatograph/dotfiles">dotfiles</a>.
+I&#8217;m very happy that I&#8217;m happy with Vim.</p>
+
+<h3>Planeshift</h3>
+
+<p>For now Rails is my first weapon of choice, follow by Node.js, PHP,
+and still ASP.net MVC I guess. Many should come by and I&#8217;m still
+happy with this wab development thingy eveyday. It&#8217;s good to
+recall old memories and take a look back what I have done in this career path.
+And I have a thought with myself that I&#8217;ll keep going, higher and higher
+everyday.</p>
+
+<p>The sky is a limit, developers.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Devise user confirmation testing in development]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development/"/>
+    <updated>2013-05-02T14:57:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development</id>
+    <content type="html"><![CDATA[<p>I want to test Devise&#8217;s <code>confirmable</code> feature in local development, so I need
+a way to locally send &amp; receive emails. Got this technique from this <a href="http://stackoverflow.com/questions/8186584/how-do-i-set-up-email-confirmation-with-devise">post</a>.
+I&#8217;d like to paste it here.</p>
+
+<ul>
+<li>Make sure you include confirmable in Model.devise call</li>
+<li>Make sure you add confirmable to the user migration</li>
+<li>Generate the devise views <em>(ps. I found that this step is unnecessary)</em></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails generate devise:views
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Add the following config lines in <code>/config/environments/development.rb</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>development.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:host</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost:3000&#39;</span> <span class="p">}</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:address</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="mi">1025</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>To test the setup in development install the mailcatcher gem,
+that you will use as a SMTP server in development, catching all incoming mails
+and displaying them on <a href="http://localhost:1080/">localhost:1080</a></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>gem install mailcatcher
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once installed start the mailcatcher server with the command</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mailcatcher
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A toy SMTP server will be running on port 1025 catching and displaying emails on HTTP port 1080.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SendGrid + Devise on Heroku]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku/"/>
+    <updated>2013-05-01T14:41:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku</id>
+    <content type="html"><![CDATA[<p>Let&#8217;s say I have a subdomain <a href="http://devsheet.phatograph.com/">devsheet.phatograph.com</a> and I want to configure <strong>SendGrid</strong> and <strong>Devise</strong> in Heroku, here are things to be done.</p>
+
+<h3>production.rb</h3>
+
+<p>Devise documentation and this <a href="http://stackoverflow.com/questions/6019083/setting-up-devise-sendgrid-on-heroku">post</a> tell me to configure <code>config.action_mailer.default_url_options</code> as:</p>
+
+<figure class='code'><figcaption><span>production.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:host</span> <span class="o">=&gt;</span> <span class="s1">&#39;devsheet.phatograph.com&#39;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And from Heroku Dev Center&#8217;s <a href="https://devcenter.heroku.com/articles/smtp#sending-email-from-rails">post</a>:</p>
+
+<figure class='code'><figcaption><span>production.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">raise_delivery_errors</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+</span><span class='line'><span class="ss">ActionMailer</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">:address</span>        <span class="o">=&gt;</span> <span class="s2">&quot;smtp.sendgrid.net&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:port</span>           <span class="o">=&gt;</span> <span class="s2">&quot;25&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:authentication</span> <span class="o">=&gt;</span> <span class="ss">:plain</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:user_name</span>      <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SENDGRID_USERNAME&#39;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:password</span>       <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SENDGRID_PASSWORD&#39;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:domain</span>         <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SENDGRID_DOMAIN&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>devise.rb</h3>
+
+<p>From Devise&#8217;s predefined configuration:</p>
+
+<figure class='code'><figcaption><span>devise.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">mailer_sender</span> <span class="o">=</span> <span class="s2">&quot;noreply@devsheet.phatograph.com&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Handmade Timestamp Service in OSX]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/handmade-timestamp-service-in-osx/"/>
+    <updated>2013-04-26T21:22:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/26/handmade-timestamp-service-in-osx</id>
+    <content type="html"><![CDATA[<p>When I need to test a form while developing, I was really bored and too lazy to think of some text to fill in any text input. Things like <code>dasdsa</code> or <code>sajklhdas</code> are too messy, and even though I have <a href="http://littleipsum.com/">LittleIpsum</a> installed it still takes too many clicks and mouse dragging. There must be a better way. I thought about using a timestamp.</p>
+
+<p>So I found this <a href="http://superuser.com/questions/227213/what-is-the-easiest-way-to-get-a-yyyy-mm-dd-hhmmss-timestamp-hotkey-on-the-mac">post</a>. Easy handmade service could do the job. Here&#8217;s how to set it up.</p>
+
+<ul>
+<li>Launch <strong>Automator.app</strong>, add new <strong>Service</strong>.</li>
+<li>Search for <strong>Run Shell Script</strong> and fill in <code>date "+%Y-%m-%d %T"</code>, I&#8217;m using <code>/bin/zsh</code> by the way.</li>
+<li>At the upper <strong>Service receives</strong> section, select <strong>no input</strong> and <strong>any application</strong>, also check <strong>Output replaces selected text</strong>.</li>
+<li>Save the service, I named it <strong>Insert Timestamp</strong>.</li>
+</ul>
+
+
+<p><img class="center" src="http://dl.dropboxusercontent.com/s/hg6p2dywe1ck1s5/2556-04-26_at_9.14.04_PM.png"></p>
+
+<ul>
+<li>Now go to <strong>System Preferences</strong> and <strong>Keyboard</strong>, in the <strong>Keyboard Shortcuts</strong> tab you will find your newly created service within the <strong>Text</strong> dropdown. Check to activate it and assign a keyboard shortcut. I use <code>cmd + ctrl + shift + D</code> for my setup.</li>
+</ul>
+
+
+<p><img class="center" src="http://dl.dropboxusercontent.com/s/6khzilblhj473id/2556-04-26_at_9.19.55_PM.png"></p>
+
+<p>And that&#8217;s it! Let&#8217;s enjoy this little handy trick ;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku and Travis]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis/"/>
+    <updated>2013-04-26T17:34:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis</id>
+    <content type="html"><![CDATA[<p>The story was this, I would like to have a CI to get my code from GitHub,
+maybe run some test, and deploy it to Heroku. So I could commit to one place
+(<code>master</code>) and everything would be set up. Travis is very handy in this,
+but require some configurations.</p>
+
+<p>Well I&#8217;ve covered most of my Travis knowledge on <a href="http://phatograph.github.io/blog-octopress/articles/2013/04/26/heroku-and-unicorn/">previous post</a>
+so there&#8217;s nothing much here. Let&#8217;s see my configuration for the upcoming <a href="https://github.com/phatograph/phatograph2013">phatograph2013</a>
+then.</p>
+
+<figure class='code'><figcaption><span>.travis.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
+</span><span class='line'><span class="l-Scalar-Plain">after_script</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">if [[ &quot;$TRAVIS_BRANCH&quot; != &quot;master&quot; ]]; then exit 0; fi</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git remote add heroku git@heroku.com:phatograph2013.git</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;Host heroku.com&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;   StrictHostKeyChecking no&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;   CheckHostIP no&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;   UserKnownHostsFile=/dev/null&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">heroku keys:clear</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">yes | heroku keys:add</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">yes | git push heroku master</span>
+</span><span class='line'><span class="l-Scalar-Plain">env</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">global</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">secure</span><span class="p-Indicator">:</span> <span class="kt">!</span> <span class="s">&#39;FZ4Os+3zidYERHmdesrifZO47XGy7jOfH4v/wbYofbRhLQJUwplQHFVF6aHi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This build came up from <a href="http://xseignard.github.io/2013/02/18/continuous-deployement-with-github-travis-and-heroku-for-node.js/">many</a>
+<a href="http://stackoverflow.com/questions/10235026/how-to-deploy-an-rails-app-on-heroku-from-travis-ci">really</a>
+<a href="http://metabates.com/2012/10/23/deploying-to-heroku-from-travisci/">nice</a>
+<a href="http://www.neilmiddleton.com/deploying-to-heroku-from-travis-ci/">posts</a>.
+I would like to thank them all here.</p>
+
+<p>The trick is you need to encrypt your Heroku API key.</p>
+
+<figure class='code'><figcaption><span>bash</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>travis encrypt <span class="nv">HEROKU_API_KEY</span><span class="o">=</span>&lt;your_heroku_key&gt; --add
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The command would generate a <code>secure:</code> property. Another note at this line:</p>
+
+<figure class='code'><figcaption><span>.travis.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">if [[ &quot;$TRAVIS_BRANCH&quot; != &quot;master&quot; ]]; then exit 0; fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I have the CI perform only commits to <code>master</code>, so the feature branch
+commits won&#8217;t trigger the code deployment.</p>
+
+<p>And because I don&#8217;t have any test suite for this site. So I have to let
+the rake run nothing</p>
+
+<figure class='code'><figcaption><span>Rakefile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env rake</span>
+</span><span class='line'><span class="c1"># Add your own tasks in files placed in lib/tasks ending in .rake,</span>
+</span><span class='line'><span class="c1"># for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../config/application&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">Phatograph2013</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">load_tasks</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">task</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="o">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku and Unicorn]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-unicorn/"/>
+    <updated>2013-04-26T17:16:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-unicorn</id>
+    <content type="html"><![CDATA[<p>Yeah that rainbow Unicorn. I want to blog this for a while but I was too lazy.
+I have been using <a href="http://unicorn.bogomips.org/">Unicorn</a> since I built
+my own VPS, <a href="http://appwaker-vps.phatograph.com/">AppWaker</a> got the first shot.
+I also need concurrent connections on <a href="http://teeview.phatograph.com/">Teeview</a>
+as well, so I came across some <a href="http://blog.codeship.io/2012/05/06/Unicorn-on-Heroku.html">nice</a>
+<a href="https://blog.heroku.com/archives/2013/2/27/unicorn_rails">articles</a>.</p>
+
+<p>Here is a sample of the Unicorn configuration:</p>
+
+<figure class='code'><figcaption><span>unicorn.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">worker_processes</span> <span class="mi">3</span>
+</span><span class='line'><span class="n">timeout</span> <span class="mi">600</span>
+</span><span class='line'><span class="n">preload_app</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">before_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
+</span><span class='line'>  <span class="c1"># Replace with MongoDB or whatever</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="p">)</span>
+</span><span class='line'>    <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">disconnect!</span>
+</span><span class='line'>    <span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Disconnected from ActiveRecord&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># If you are using Redis but not Resque, change this</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="no">Resque</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Resque</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">quit</span>
+</span><span class='line'>    <span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Disconnected from Redis&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">sleep</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">after_fork</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="p">,</span> <span class="n">worker</span><span class="o">|</span>
+</span><span class='line'>  <span class="c1"># Replace with MongoDB or whatever</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="p">)</span>
+</span><span class='line'>    <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">establish_connection</span>
+</span><span class='line'>    <span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Connected to ActiveRecord&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># If you are using Redis but not Resque, change this</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="no">Resque</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Resque</span><span class="o">.</span><span class="n">redis</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;REDIS_URI&#39;</span><span class="o">]</span>
+</span><span class='line'>    <span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Connected to Redis&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Travis to the rescue]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue/"/>
+    <updated>2013-04-26T10:38:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue</id>
+    <content type="html"><![CDATA[<p>One thing I don&#8217;t like about Octopress it requires too much steps to write a single blog post. You have to:</p>
+
+<ul>
+<li>Create a new post <code>rake new_post['Malesuada Ornare Mollis']</code></li>
+<li>Write a content</li>
+<li>Generate static files <code>rake generate</code></li>
+<li>Deploy the generated site <code>rake deploy</code></li>
+</ul>
+
+
+<p>This is insane. 4 steps and terminal is required ? I just want to edit directly from the browser, and sometimes from Sublime.</p>
+
+<p>So <a href="https://travis-ci.org/">Travis CI</a> crossed my mind. What if I just push changes to <code>master</code> and let CI generate and deploy for me. Would be nice. And there is also <a href="http://prose.io/">prose.io</a> to make writing Markdown fancy.</p>
+
+<p>I tried with my own and I couldn&#8217;t customize Travis for my needs. So I came across this <a href="http://darvin.github.io/blog/2013/01/13/Prose_Octopress_TravisIO/">post</a> from Sergey Klimov. This saved my day. I would like to break things down here a bit. Several things are needed for this ritual to work.</p>
+
+<h3>Generating encrypted SSH key for Travis</h3>
+
+<p>In order to make this happen, Travis has to hold our GitHub deploy SSH key. The key is needed to be encrypted too. Travis already provides the <code>travis encrypt</code> from its gem. Luke Patterson came up with this <a href="https://gist.github.com/lukewpatterson/4242707">gist</a> to make this easier, allow me to paste a part of it here:</p>
+
+<p>One thing, the SSH must not have the passphrase, Travis won&#8217;t be able to enter it via the prompt.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ base64 --wrap=0 ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa_base64
+</span><span class='line'>$ ENCRYPTION_FILTER="echo \$(echo \"-\")\$(travis encrypt veewee-community/veewee-push \"\$FILE='\`cat $FILE\`'\" | grep secure:)"
+</span><span class='line'>$ split --bytes=100 --numeric-suffixes --suffix-length=2 --filter="$ENCRYPTION_FILTER" ~/.ssh/id_rsa_base64 id_rsa_</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Basically (I think) it would encode our <code>id_rsa</code> in base64, split each line of them and run <code>travis encrypt .. --add</code>, resulting in the encrypted strings are appended to the <code>.travis.yml</code></p>
+
+<p>Unfortunately this doesn&#8217;t work in my OSX somehow (due to the <code>split</code> command). So I just <code>base64</code> my <code>id_rsa</code>, get that <code>id_rsa_base64</code>, open it, and do something like this.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ travis encrypt id_rsa_00=LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVE --add
+</span><span class='line'>$ travis encrypt id_rsa_01=CkRFSy1JbmZvOiBBRVMtMTI4LUNCQyxFNDQ2OTNEQkMzNjcxOERFNTc5QzQ4MTQyNUExQjg4 --add
+</span><span class='line'>$ travis encrypt id_rsa_02=OQoKMXhlbEljK2xlVGVNdlVrSUxNRE9LdCtsL1hQZy9VYy9zYXRrNGJUeWVPcnhLMnVmUysz --add
+</span><span class='line'>$ travis encrypt
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hahaha I know this is horrible. Would have come up with more neat solution someday. For now I just paste those line in my terminal, then I have my encrypted key appended in <code>.travis.yml</code>.</p>
+
+<p>Another thing to note is this encrypted key is for per-repo. You may to run those <code>travis encrypt</code> separately for each repository.</p>
+
+<h3>The <code>.travis.yml</code> itself</h3>
+
+<p>Sergey has provided his cool <code>.travis.yml</code> for this ritual in his post. I modified it a bit, here is what the file looks like:</p>
+
+<figure class='code'><figcaption><span>.travis.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ruby</span>
+</span><span class='line'><span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
+</span><span class='line'><span class="l-Scalar-Plain">before_script</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git remote set-url origin $REPO.git</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git config --global user.email &quot;phatograph@gmail.com&quot;</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git config --global user.name &quot;Phat Wangrungarun (via TravisCI)&quot;</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo -n $id_rsa_{00..32} &gt;&gt; ~/.ssh/id_rsa_base64</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 &gt; ~/.ssh/id_rsa</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">chmod 600 ~/.ssh/id_rsa</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo -e &quot;Host github.com\n\tStrictHostKeyChecking no\n&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">rake setup_github_pages[$REPO]</span>
+</span><span class='line'><span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">bundle exec rake generate</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">bundle exec rake deploy</span>
+</span><span class='line'><span class="l-Scalar-Plain">env</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">global</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">REPO=&quot;git@github.com:phatograph/blog&quot;</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">secure</span><span class="p-Indicator">:</span> <span class="kt">!</span> <span class="s">&#39;Sge5rCthtw0QGTfqVGvkVMVP/4RQwwnjM0YYnxeTmImi4cwWQkXDXSuctkKz</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="s">FoGzyvzB75Zbu86Yf9yD5M+2QOdYru4DZdq/d17AEnwFnB+ETjxRcnSbzJaK</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The rest of the file is the encrypted key from <code>travis encrypt</code>, just leave it alone.</p>
+
+<p>What this does is it would decrypt the keys, assign them to <code>$id_rsa_00</code>, <code>$id_rsa_01</code>, <code>$id_rsa_02</code> and so on, gather them together in <code>~/.ssh/id_rsa_base64</code>. Then run a <code>base64 --decode --ignore-garbage</code> to make <code>~/.ssh/id_rsa</code>. Now we have our ssh key for Travis to push to GitHub, really nice. The left is just set the path to push, generate, and deploy.</p>
+
+<h3>Job is done</h3>
+
+<p>So far it seems too complex to write a blog. But for me it&#8217;s fun to figure these things out (and it works). I have my blog, it&#8217;s under <a href="https://github.com/phatograph/blog/tree/master">version control</a>, it&#8217;s <a href="https://github.com/phatograph/blog/">open source</a>, even its own <a href="https://travis-ci.org/phatograph/blog">CI</a>. Octopress and friends are cool for me for now. ;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello Octopress]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/25/hello-octopress/"/>
+    <updated>2013-04-25T18:07:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/25/hello-octopress</id>
+    <content type="html"><![CDATA[<p>After 2 years relationship with <a href="http://blog.phatograph.com/">wordpress</a> I&#8217;ve decided to move along. This time I kinda want a more <em>simple</em> and <em>static</em> blogging system. I&#8217;ve heard about <a href="http://octopress.org/">Octopress</a> and <a href="http://jekyllrb.com/">Jekyll</a> since I started working with ruby a year ago and that time I had no idea how to use it. Now I quite understand how things work in this static-generated blogging much more, and I choose Octopress first.</p>
+
+<p>Next up would be porting posts from the old blog. Oh yeah and this time I feel more comfortable to write things in English. Things changed, I&#8217;ve grown up, at least that&#8217;s what I think.</p>
+
+<p>Once, hello again, Octopress ;)</p>
+]]></content>
+  </entry>
+  
+</feed>

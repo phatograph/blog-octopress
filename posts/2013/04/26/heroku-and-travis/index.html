@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Heroku and Travis - phato.blog</title>
+  <meta name="author" content="Phat Wangrungarun">
+
+  
+  <meta name="description" content="The story was this, I would like to have a CI to get my code from GitHub,
+maybe run some test, and deploy it to Heroku. So I could commit to one &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis">
+  <link href="/blog-octopress/favicon.png" rel="icon">
+  <link href="/blog-octopress/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog-octopress/atom.xml" rel="alternate" title="phato.blog" type="application/atom+xml">
+  <script src="/blog-octopress/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/blog-octopress/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15209814-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1>
+    <a href="/blog-octopress/">phato.blog</a>
+    <a href="https://travis-ci.org/phatograph/blog-octopress" target="_blank">
+      <img src="https://travis-ci.org/phatograph/blog-octopress.png" alt="travis" style="margin-left: 5px;" />
+    </a>
+  </h1>
+  
+    <h2>nothingish ;)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/blog-octopress/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:phatograph.github.io/blog-octopress" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/blog-octopress/">Home</a></li>
+  <li><a href="/blog-octopress/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Heroku and Travis</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-26T17:34:00+00:00" pubdate data-updated="true">Apr 26<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The story was this, I would like to have a CI to get my code from GitHub,
+maybe run some test, and deploy it to Heroku. So I could commit to one place
+(<code>master</code>) and everything would be set up. Travis is very handy in this,
+but require some configurations.</p>
+
+<p>Well I&#8217;ve covered most of my Travis knowledge on <a href="/blog-octopress/articles/2013/04/26/heroku-and-unicorn/">previous post</a>
+so there&#8217;s nothing much here. Let&#8217;s see my configuration for the upcoming <a href="https://github.com/phatograph/phatograph2013">phatograph2013</a>
+then.</p>
+
+<figure class='code'><figcaption><span>.travis.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="l-Scalar-Plain">rvm</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">1.9.3</span>
+</span><span class='line'><span class="l-Scalar-Plain">after_script</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">if [[ &quot;$TRAVIS_BRANCH&quot; != &quot;master&quot; ]]; then exit 0; fi</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git remote add heroku git@heroku.com:phatograph2013.git</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;Host heroku.com&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;   StrictHostKeyChecking no&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;   CheckHostIP no&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">echo &quot;   UserKnownHostsFile=/dev/null&quot; &gt;&gt; ~/.ssh/config</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">heroku keys:clear</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">yes | heroku keys:add</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">yes | git push heroku master</span>
+</span><span class='line'><span class="l-Scalar-Plain">env</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">global</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">secure</span><span class="p-Indicator">:</span> <span class="kt">!</span> <span class="s">&#39;FZ4Os+3zidYERHmdesrifZO47XGy7jOfH4v/wbYofbRhLQJUwplQHFVF6aHi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This build came up from <a href="http://xseignard.github.io/2013/02/18/continuous-deployement-with-github-travis-and-heroku-for-node.js/">many</a>
+<a href="http://stackoverflow.com/questions/10235026/how-to-deploy-an-rails-app-on-heroku-from-travis-ci">really</a>
+<a href="http://metabates.com/2012/10/23/deploying-to-heroku-from-travisci/">nice</a>
+<a href="http://www.neilmiddleton.com/deploying-to-heroku-from-travis-ci/">posts</a>.
+I would like to thank them all here.</p>
+
+<p>The trick is you need to encrypt your Heroku API key.</p>
+
+<figure class='code'><figcaption><span>bash</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>travis encrypt <span class="nv">HEROKU_API_KEY</span><span class="o">=</span>&lt;your_heroku_key&gt; --add
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The command would generate a <code>secure:</code> property. Another note at this line:</p>
+
+<figure class='code'><figcaption><span>.travis.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">if [[ &quot;$TRAVIS_BRANCH&quot; != &quot;master&quot; ]]; then exit 0; fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I have the CI perform only commits to <code>master</code>, so the feature branch
+commits won&#8217;t trigger the code deployment.</p>
+
+<p>And because I don&#8217;t have any test suite for this site. So I have to let
+the rake run nothing</p>
+
+<figure class='code'><figcaption><span>Rakefile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env rake</span>
+</span><span class='line'><span class="c1"># Add your own tasks in files placed in lib/tasks ending in .rake,</span>
+</span><span class='line'><span class="c1"># for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../config/application&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">Phatograph2013</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">load_tasks</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">task</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="o">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Phat Wangrungarun</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-26T17:34:00+00:00" pubdate data-updated="true">Apr 26<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog-octopress/posts/categories/heroku/'>Heroku</a>, <a class='category' href='/blog-octopress/posts/categories/travis/'>Travis</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis/" data-via="phatograph" data-counturl="http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog-octopress/posts/2013/04/26/heroku-and-unicorn/" title="Previous Post: Heroku and Unicorn">&laquo; Heroku and Unicorn</a>
+      
+      
+        <a class="basic-alignment right" href="/blog-octopress/posts/2013/04/26/handmade-timestamp-service-in-osx/" title="Next Post: Handmade Timestamp Service in OSX">Handmade Timestamp Service in OSX &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/06/07/angelhackbkk/">#AngelHackBKK</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/26/my-old-summaries-on-my-resume/">My (Old) Summaries on my Resume</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/09/a-look-back-at-my-skills/">A Look Back at my Skills</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development/">Devise user confirmation testing in development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku/">SendGrid + Devise on Heroku</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/phatograph">@phatograph</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/blog/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'phatograph',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/blog-octopress/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/109629495831794243165?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Phat Wangrungarun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'phatoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis/';
+        var disqus_url = 'http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

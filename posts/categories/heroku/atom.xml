@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Heroku | phato.blog]]></title>
+  <link href="http://phatograph.github.io/blog-octopress/posts/categories/heroku/atom.xml" rel="self"/>
+  <link href="http://phatograph.github.io/blog-octopress/"/>
+  <updated>2013-08-13T08:12:00+00:00</updated>
+  <id>http://phatograph.github.io/blog-octopress/</id>
+  <author>
+    <name><![CDATA[Phat Wangrungarun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SendGrid + Devise on Heroku]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku/"/>
+    <updated>2013-05-01T14:41:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku</id>
+    <content type="html"><![CDATA[<p>Let's say I have a subdomain <a href="http://devsheet.phatograph.com/">devsheet.phatograph.com</a> and I want to configure <strong>SendGrid</strong> and <strong>Devise</strong> in Heroku, here are things to be done.</p>
+
+<h3>production.rb</h3>
+
+<p>Devise documentation and this <a href="http://stackoverflow.com/questions/6019083/setting-up-devise-sendgrid-on-heroku">post</a> tell me to configure <code>config.action_mailer.default_url_options</code> as:</p>
+
+<p><code>ruby production.rb
+config.action_mailer.default_url_options = { :host =&gt; 'devsheet.phatograph.com' }
+</code></p>
+
+<p>And from Heroku Dev Center's <a href="https://devcenter.heroku.com/articles/smtp#sending-email-from-rails">post</a>:</p>
+
+<p><code>ruby production.rb
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address        =&gt; "smtp.sendgrid.net",
+  :port           =&gt; "25",
+  :authentication =&gt; :plain,
+  :user_name      =&gt; ENV['SENDGRID_USERNAME'],
+  :password       =&gt; ENV['SENDGRID_PASSWORD'],
+  :domain         =&gt; ENV['SENDGRID_DOMAIN']
+}
+</code></p>
+
+<h3>devise.rb</h3>
+
+<p>From Devise's predefined configuration:</p>
+
+<p><code>ruby devise.rb
+config.mailer_sender = "noreply@devsheet.phatograph.com"
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku and Travis]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis/"/>
+    <updated>2013-04-26T17:34:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis</id>
+    <content type="html"><![CDATA[<p>The story was this, I would like to have a CI to get my code from GitHub,
+maybe run some test, and deploy it to Heroku. So I could commit to one place
+(<code>master</code>) and everything would be set up. Travis is very handy in this,
+but require some configurations.</p>
+
+<p>Well I've covered most of my Travis knowledge on <a href="/articles/2013/04/26/heroku-and-unicorn/">previous post</a>
+so there's nothing much here. Let's see my configuration for the upcoming <a href="https://github.com/phatograph/phatograph2013">phatograph2013</a>
+then.</p>
+
+<h2>``` yaml .travis.yml</h2>
+
+<p>rvm:
+- 1.9.3
+after_script:
+- if [[ "$TRAVIS_BRANCH" != "master" ]]; then exit 0; fi
+- wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+- git remote add heroku git@heroku.com:phatograph2013.git
+- echo "Host heroku.com" >> ~/.ssh/config
+- echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+- echo "   CheckHostIP no" >> ~/.ssh/config
+- echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+- heroku keys:clear
+- yes | heroku keys:add
+- yes | git push heroku master
+env:
+  global:
+  - secure: ! 'FZ4Os+3zidYERHmdesrifZO47XGy7jOfH4v/wbYofbRhLQJUwplQHFVF6aHi
+```</p>
+
+<p>This build came up from <a href="http://xseignard.github.io/2013/02/18/continuous-deployement-with-github-travis-and-heroku-for-node.js/">many</a>
+<a href="http://stackoverflow.com/questions/10235026/how-to-deploy-an-rails-app-on-heroku-from-travis-ci">really</a>
+<a href="http://metabates.com/2012/10/23/deploying-to-heroku-from-travisci/">nice</a>
+<a href="http://www.neilmiddleton.com/deploying-to-heroku-from-travis-ci/">posts</a>.
+I would like to thank them all here.</p>
+
+<p>The trick is you need to encrypt your Heroku API key.</p>
+
+<p><code>bash bash
+$ travis encrypt HEROKU_API_KEY=&lt;your_heroku_key&gt; --add
+</code></p>
+
+<p>The command would generate a <code>secure:</code> property. Another note at this line:</p>
+
+<p><code>yaml .travis.yml
+- if [[ "$TRAVIS_BRANCH" != "master" ]]; then exit 0; fi
+</code></p>
+
+<p>I have the CI perform only commits to <code>master</code>, so the feature branch
+commits won't trigger the code deployment.</p>
+
+<p>And because I don't have any test suite for this site. So I have to let
+the rake run nothing</p>
+
+<p>``` ruby Rakefile</p>
+
+<h1>!/usr/bin/env rake</h1>
+
+<h1>Add your own tasks in files placed in lib/tasks ending in .rake,</h1>
+
+<h1>for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.</h1>
+
+<p>require File.expand_path('../config/application', <strong>FILE</strong>)</p>
+
+<p>Phatograph2013::Application.load_tasks</p>
+
+<p>task :default => []
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku and Unicorn]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-unicorn/"/>
+    <updated>2013-04-26T17:16:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-unicorn</id>
+    <content type="html"><![CDATA[<p>Yeah that rainbow Unicorn. I want to blog this for a while but I was too lazy.
+I have been using <a href="http://unicorn.bogomips.org/">Unicorn</a> since I built
+my own VPS, <a href="http://appwaker-vps.phatograph.com/">AppWaker</a> got the first shot.
+I also need concurrent connections on <a href="http://teeview.phatograph.com/">Teeview</a>
+as well, so I came across some <a href="http://blog.codeship.io/2012/05/06/Unicorn-on-Heroku.html">nice</a>
+<a href="https://blog.heroku.com/archives/2013/2/27/unicorn_rails">articles</a>.</p>
+
+<p>Here is a sample of the Unicorn configuration:</p>
+
+<p>``` ruby unicorn.rb
+worker_processes 3
+timeout 600
+preload_app true</p>
+
+<p>before_fork do |server, worker|
+  # Replace with MongoDB or whatever
+  if defined?(ActiveRecord::Base)</p>
+
+<pre><code>ActiveRecord::Base.connection.disconnect!
+Rails.logger.info('Disconnected from ActiveRecord')
+</code></pre>
+
+<p>  end</p>
+
+<p>  # If you are using Redis but not Resque, change this
+  if defined?(Resque)</p>
+
+<pre><code>Resque.redis.quit
+Rails.logger.info('Disconnected from Redis')
+</code></pre>
+
+<p>  end</p>
+
+<p>  sleep 1
+end</p>
+
+<p>after_fork do |server, worker|
+  # Replace with MongoDB or whatever
+  if defined?(ActiveRecord::Base)</p>
+
+<pre><code>ActiveRecord::Base.establish_connection
+Rails.logger.info('Connected to ActiveRecord')
+</code></pre>
+
+<p>  end</p>
+
+<p>  # If you are using Redis but not Resque, change this
+  if defined?(Resque)</p>
+
+<pre><code>Resque.redis = ENV['REDIS_URI']
+Rails.logger.info('Connected to Redis')
+</code></pre>
+
+<p>  end
+end
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Travis | phato.blog]]></title>
+  <link href="http://phatograph.github.io/blog-octopress/posts/categories/travis/atom.xml" rel="self"/>
+  <link href="http://phatograph.github.io/blog-octopress/"/>
+  <updated>2013-08-13T08:12:00+00:00</updated>
+  <id>http://phatograph.github.io/blog-octopress/</id>
+  <author>
+    <name><![CDATA[Phat Wangrungarun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku and Travis]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis/"/>
+    <updated>2013-04-26T17:34:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/26/heroku-and-travis</id>
+    <content type="html"><![CDATA[<p>The story was this, I would like to have a CI to get my code from GitHub,
+maybe run some test, and deploy it to Heroku. So I could commit to one place
+(<code>master</code>) and everything would be set up. Travis is very handy in this,
+but require some configurations.</p>
+
+<p>Well I've covered most of my Travis knowledge on <a href="/articles/2013/04/26/heroku-and-unicorn/">previous post</a>
+so there's nothing much here. Let's see my configuration for the upcoming <a href="https://github.com/phatograph/phatograph2013">phatograph2013</a>
+then.</p>
+
+<h2>``` yaml .travis.yml</h2>
+
+<p>rvm:
+- 1.9.3
+after_script:
+- if [[ "$TRAVIS_BRANCH" != "master" ]]; then exit 0; fi
+- wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+- git remote add heroku git@heroku.com:phatograph2013.git
+- echo "Host heroku.com" >> ~/.ssh/config
+- echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+- echo "   CheckHostIP no" >> ~/.ssh/config
+- echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+- heroku keys:clear
+- yes | heroku keys:add
+- yes | git push heroku master
+env:
+  global:
+  - secure: ! 'FZ4Os+3zidYERHmdesrifZO47XGy7jOfH4v/wbYofbRhLQJUwplQHFVF6aHi
+```</p>
+
+<p>This build came up from <a href="http://xseignard.github.io/2013/02/18/continuous-deployement-with-github-travis-and-heroku-for-node.js/">many</a>
+<a href="http://stackoverflow.com/questions/10235026/how-to-deploy-an-rails-app-on-heroku-from-travis-ci">really</a>
+<a href="http://metabates.com/2012/10/23/deploying-to-heroku-from-travisci/">nice</a>
+<a href="http://www.neilmiddleton.com/deploying-to-heroku-from-travis-ci/">posts</a>.
+I would like to thank them all here.</p>
+
+<p>The trick is you need to encrypt your Heroku API key.</p>
+
+<p><code>bash bash
+$ travis encrypt HEROKU_API_KEY=&lt;your_heroku_key&gt; --add
+</code></p>
+
+<p>The command would generate a <code>secure:</code> property. Another note at this line:</p>
+
+<p><code>yaml .travis.yml
+- if [[ "$TRAVIS_BRANCH" != "master" ]]; then exit 0; fi
+</code></p>
+
+<p>I have the CI perform only commits to <code>master</code>, so the feature branch
+commits won't trigger the code deployment.</p>
+
+<p>And because I don't have any test suite for this site. So I have to let
+the rake run nothing</p>
+
+<p>``` ruby Rakefile</p>
+
+<h1>!/usr/bin/env rake</h1>
+
+<h1>Add your own tasks in files placed in lib/tasks ending in .rake,</h1>
+
+<h1>for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.</h1>
+
+<p>require File.expand_path('../config/application', <strong>FILE</strong>)</p>
+
+<p>Phatograph2013::Application.load_tasks</p>
+
+<p>task :default => []
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Travis to the rescue]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue/"/>
+    <updated>2013-04-26T10:38:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/04/26/travis-to-the-rescue</id>
+    <content type="html"><![CDATA[<p>One thing I don't like about Octopress it requires too much steps to write a single blog post. You have to:</p>
+
+<ul>
+<li>Create a new post <code>rake new_post['Malesuada Ornare Mollis']</code></li>
+<li>Write a content</li>
+<li>Generate static files <code>rake generate</code></li>
+<li>Deploy the generated site <code>rake deploy</code></li>
+</ul>
+
+
+<p>This is insane. 4 steps and terminal is required ? I just want to edit directly from the browser, and sometimes from Sublime.</p>
+
+<p>So <a href="https://travis-ci.org/">Travis CI</a> crossed my mind. What if I just push changes to <code>master</code> and let CI generate and deploy for me. Would be nice. And there is also <a href="http://prose.io/">prose.io</a> to make writing Markdown fancy.</p>
+
+<p>I tried with my own and I couldn't customize Travis for my needs. So I came across this <a href="http://darvin.github.io/blog/2013/01/13/Prose_Octopress_TravisIO/">post</a> from Sergey Klimov. This saved my day. I would like to break things down here a bit. Several things are needed for this ritual to work.</p>
+
+<h3>Generating encrypted SSH key for Travis</h3>
+
+<p>In order to make this happen, Travis has to hold our GitHub deploy SSH key. The key is needed to be encrypted too. Travis already provides the <code>travis encrypt</code> from its gem. Luke Patterson came up with this <a href="https://gist.github.com/lukewpatterson/4242707">gist</a> to make this easier, allow me to paste a part of it here:</p>
+
+<p>One thing, the SSH must not have the passphrase, Travis won't be able to enter it via the prompt.</p>
+
+<p><code>
+$ base64 --wrap=0 ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa_base64
+$ ENCRYPTION_FILTER="echo \$(echo \"-\")\$(travis encrypt veewee-community/veewee-push \"\$FILE='\`cat $FILE\`'\" | grep secure:)"
+$ split --bytes=100 --numeric-suffixes --suffix-length=2 --filter="$ENCRYPTION_FILTER" ~/.ssh/id_rsa_base64 id_rsa_
+</code></p>
+
+<p>Basically (I think) it would encode our <code>id_rsa</code> in base64, split each line of them and run <code>travis encrypt .. --add</code>, resulting in the encrypted strings are appended to the <code>.travis.yml</code></p>
+
+<p>Unfortunately this doesn't work in my OSX somehow (due to the <code>split</code> command). So I just <code>base64</code> my <code>id_rsa</code>, get that <code>id_rsa_base64</code>, open it, and do something like this.</p>
+
+<p><code>
+$ travis encrypt id_rsa_00=LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVE --add
+$ travis encrypt id_rsa_01=CkRFSy1JbmZvOiBBRVMtMTI4LUNCQyxFNDQ2OTNEQkMzNjcxOERFNTc5QzQ4MTQyNUExQjg4 --add
+$ travis encrypt id_rsa_02=OQoKMXhlbEljK2xlVGVNdlVrSUxNRE9LdCtsL1hQZy9VYy9zYXRrNGJUeWVPcnhLMnVmUysz --add
+$ travis encrypt
+...
+</code></p>
+
+<p>Hahaha I know this is horrible. Would have come up with more neat solution someday. For now I just paste those line in my terminal, then I have my encrypted key appended in <code>.travis.yml</code>.</p>
+
+<p>Another thing to note is this encrypted key is for per-repo. You may to run those <code>travis encrypt</code> separately for each repository.</p>
+
+<h3>The <code>.travis.yml</code> itself</h3>
+
+<p>Sergey has provided his cool <code>.travis.yml</code> for this ritual in his post. I modified it a bit, here is what the file looks like:</p>
+
+<h2>``` yaml .travis.yml</h2>
+
+<p>language: ruby
+rvm:
+- 1.9.3
+before_script:
+- git remote set-url origin $REPO.git
+- git config --global user.email "phatograph@gmail.com"
+- git config --global user.name "Phat Wangrungarun (via TravisCI)"
+- echo -n $id_rsa_{00..32} >> ~/.ssh/id_rsa_base64
+- base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- rake setup_github_pages[$REPO]
+script:
+- bundle exec rake generate
+- bundle exec rake deploy
+env:
+  global:
+  - REPO="git@github.com:phatograph/blog"
+  - secure: ! 'Sge5rCthtw0QGTfqVGvkVMVP/4RQwwnjM0YYnxeTmImi4cwWQkXDXSuctkKz</p>
+
+<pre><code>  FoGzyvzB75Zbu86Yf9yD5M+2QOdYru4DZdq/d17AEnwFnB+ETjxRcnSbzJaK
+</code></pre>
+
+<p>```</p>
+
+<p>The rest of the file is the encrypted key from <code>travis encrypt</code>, just leave it alone.</p>
+
+<p>What this does is it would decrypt the keys, assign them to <code>$id_rsa_00</code>, <code>$id_rsa_01</code>, <code>$id_rsa_02</code> and so on, gather them together in <code>~/.ssh/id_rsa_base64</code>. Then run a <code>base64 --decode --ignore-garbage</code> to make <code>~/.ssh/id_rsa</code>. Now we have our ssh key for Travis to push to GitHub, really nice. The left is just set the path to push, generate, and deploy.</p>
+
+<h3>Job is done</h3>
+
+<p>So far it seems too complex to write a blog. But for me it's fun to figure these things out (and it works). I have my blog, it's under <a href="https://github.com/phatograph/blog/tree/master">version control</a>, it's <a href="https://github.com/phatograph/blog/">open source</a>, even its own <a href="https://travis-ci.org/phatograph/blog">CI</a>. Octopress and friends are cool for me for now. ;)</p>
+]]></content>
+  </entry>
+  
+</feed>

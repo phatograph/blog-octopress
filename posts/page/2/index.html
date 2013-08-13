@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>phato.blog</title>
+  <meta name="author" content="Phat Wangrungarun">
+
+  
+  <meta name="description" content="I want to test Devise&#8217;s confirmable feature in local development, so I need
+a way to locally send &amp; receive emails. Got this technique from &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://phatograph.github.io/blog-octopress/posts/page/2">
+  <link href="/blog-octopress/favicon.png" rel="icon">
+  <link href="/blog-octopress/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog-octopress/atom.xml" rel="alternate" title="phato.blog" type="application/atom+xml">
+  <script src="/blog-octopress/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/blog-octopress/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15209814-9']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1>
+    <a href="/blog-octopress/">phato.blog</a>
+    <a href="https://travis-ci.org/phatograph/blog-octopress" target="_blank">
+      <img src="https://travis-ci.org/phatograph/blog-octopress.png" alt="travis" style="margin-left: 5px;" />
+    </a>
+  </h1>
+  
+    <h2>nothingish ;)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/blog-octopress/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:phatograph.github.io/blog-octopress" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/blog-octopress/">Home</a></li>
+  <li><a href="/blog-octopress/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development/">Devise User Confirmation Testing in Development</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-02T14:57:00+00:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
+        
+         | <a href="/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I want to test Devise&#8217;s <code>confirmable</code> feature in local development, so I need
+a way to locally send &amp; receive emails. Got this technique from this <a href="http://stackoverflow.com/questions/8186584/how-do-i-set-up-email-confirmation-with-devise">post</a>.
+I&#8217;d like to paste it here.</p>
+
+<ul>
+<li>Make sure you include confirmable in Model.devise call</li>
+<li>Make sure you add confirmable to the user migration</li>
+<li>Generate the devise views <em>(ps. I found that this step is unnecessary)</em></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails generate devise:views
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Add the following config lines in <code>/config/environments/development.rb</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>development.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:host</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost:3000&#39;</span> <span class="p">}</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:address</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="ss">:port</span> <span class="o">=&gt;</span> <span class="mi">1025</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>To test the setup in development install the mailcatcher gem,
+that you will use as a SMTP server in development, catching all incoming mails
+and displaying them on <a href="http://localhost:1080/">localhost:1080</a></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>gem install mailcatcher
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once installed start the mailcatcher server with the command</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mailcatcher
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A toy SMTP server will be running on port 1025 catching and displaying emails on HTTP port 1080.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku/">SendGrid + Devise on Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-01T14:41:00+00:00" pubdate data-updated="true">May 1<span>st</span>, 2013</time>
+        
+         | <a href="/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Let&#8217;s say I have a subdomain <a href="http://devsheet.phatograph.com/">devsheet.phatograph.com</a> and I want to configure <strong>SendGrid</strong> and <strong>Devise</strong> in Heroku, here are things to be done.</p>
+
+<h3>production.rb</h3>
+
+<p>Devise documentation and this <a href="http://stackoverflow.com/questions/6019083/setting-up-devise-sendgrid-on-heroku">post</a> tell me to configure <code>config.action_mailer.default_url_options</code> as:</p>
+
+<figure class='code'><figcaption><span>production.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:host</span> <span class="o">=&gt;</span> <span class="s1">&#39;devsheet.phatograph.com&#39;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And from Heroku Dev Center&#8217;s <a href="https://devcenter.heroku.com/articles/smtp#sending-email-from-rails">post</a>:</p>
+
+<figure class='code'><figcaption><span>production.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">raise_delivery_errors</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">delivery_method</span> <span class="o">=</span> <span class="ss">:smtp</span>
+</span><span class='line'><span class="ss">ActionMailer</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">smtp_settings</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">:address</span>        <span class="o">=&gt;</span> <span class="s2">&quot;smtp.sendgrid.net&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:port</span>           <span class="o">=&gt;</span> <span class="s2">&quot;25&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:authentication</span> <span class="o">=&gt;</span> <span class="ss">:plain</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:user_name</span>      <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SENDGRID_USERNAME&#39;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:password</span>       <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SENDGRID_PASSWORD&#39;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:domain</span>         <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SENDGRID_DOMAIN&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>devise.rb</h3>
+
+<p>From Devise&#8217;s predefined configuration:</p>
+
+<figure class='code'><figcaption><span>devise.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">mailer_sender</span> <span class="o">=</span> <span class="s2">&quot;noreply@devsheet.phatograph.com&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog-octopress/posts/2013/04/26/handmade-timestamp-service-in-osx/">Handmade Timestamp Service in OSX</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-26T21:22:00+00:00" pubdate data-updated="true">Apr 26<span>th</span>, 2013</time>
+        
+         | <a href="/blog-octopress/posts/2013/04/26/handmade-timestamp-service-in-osx/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I need to test a form while developing, I was really bored and too lazy to think of some text to fill in any text input. Things like <code>dasdsa</code> or <code>sajklhdas</code> are too messy, and even though I have <a href="http://littleipsum.com/">LittleIpsum</a> installed it still takes too many clicks and mouse dragging. There must be a better way. I thought about using a timestamp.</p>
+
+<p>So I found this <a href="http://superuser.com/questions/227213/what-is-the-easiest-way-to-get-a-yyyy-mm-dd-hhmmss-timestamp-hotkey-on-the-mac">post</a>. Easy handmade service could do the job. Here&#8217;s how to set it up.</p>
+
+<ul>
+<li>Launch <strong>Automator.app</strong>, add new <strong>Service</strong>.</li>
+<li>Search for <strong>Run Shell Script</strong> and fill in <code>date "+%Y-%m-%d %T"</code>, I&#8217;m using <code>/bin/zsh</code> by the way.</li>
+<li>At the upper <strong>Service receives</strong> section, select <strong>no input</strong> and <strong>any application</strong>, also check <strong>Output replaces selected text</strong>.</li>
+<li>Save the service, I named it <strong>Insert Timestamp</strong>.</li>
+</ul>
+
+
+<p><img class="center" src="http://dl.dropboxusercontent.com/s/hg6p2dywe1ck1s5/2556-04-26_at_9.14.04_PM.png"></p>
+
+<ul>
+<li>Now go to <strong>System Preferences</strong> and <strong>Keyboard</strong>, in the <strong>Keyboard Shortcuts</strong> tab you will find your newly created service within the <strong>Text</strong> dropdown. Check to activate it and assign a keyboard shortcut. I use <code>cmd + ctrl + shift + D</code> for my setup.</li>
+</ul>
+
+
+<p><img class="center" src="http://dl.dropboxusercontent.com/s/6khzilblhj473id/2556-04-26_at_9.19.55_PM.png"></p>
+
+<p>And that&#8217;s it! Let&#8217;s enjoy this little handy trick ;)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog-octopress/posts/page/3/">&larr; Older</a>
+    
+    <a href="/blog-octopress/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog-octopress/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/06/07/angelhackbkk/">#AngelHackBKK</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/26/my-old-summaries-on-my-resume/">My (Old) Summaries on my Resume</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/09/a-look-back-at-my-skills/">A Look Back at my Skills</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development/">Devise user confirmation testing in development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku/">SendGrid + Devise on Heroku</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/phatograph">@phatograph</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/blog/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'phatograph',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/blog-octopress/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/109629495831794243165?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Phat Wangrungarun -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'phatoblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

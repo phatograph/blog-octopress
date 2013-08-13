@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Devise | phato.blog]]></title>
+  <link href="http://phatograph.github.io/blog-octopress/posts/categories/devise/atom.xml" rel="self"/>
+  <link href="http://phatograph.github.io/blog-octopress/"/>
+  <updated>2013-08-13T08:12:00+00:00</updated>
+  <id>http://phatograph.github.io/blog-octopress/</id>
+  <author>
+    <name><![CDATA[Phat Wangrungarun]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Devise user confirmation testing in development]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development/"/>
+    <updated>2013-05-02T14:57:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/05/02/devise-user-confirmation-testing-in-development</id>
+    <content type="html"><![CDATA[<p>I want to test Devise's <code>confirmable</code> feature in local development, so I need
+a way to locally send &amp; receive emails. Got this technique from this <a href="http://stackoverflow.com/questions/8186584/how-do-i-set-up-email-confirmation-with-devise">post</a>.
+I'd like to paste it here.</p>
+
+<ul>
+<li>Make sure you include confirmable in Model.devise call</li>
+<li>Make sure you add confirmable to the user migration</li>
+<li>Generate the devise views <em>(ps. I found that this step is unnecessary)</em></li>
+</ul>
+
+
+<p><code>bash
+$ rails generate devise:views
+</code></p>
+
+<ul>
+<li>Add the following config lines in <code>/config/environments/development.rb</code></li>
+</ul>
+
+
+<p><code>ruby development.rb
+config.action_mailer.default_url_options = { :host =&gt; 'localhost:3000' }
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {:address =&gt; "localhost", :port =&gt; 1025}
+</code></p>
+
+<ul>
+<li>To test the setup in development install the mailcatcher gem,
+that you will use as a SMTP server in development, catching all incoming mails
+and displaying them on <a href="http://localhost:1080/">localhost:1080</a></li>
+</ul>
+
+
+<p><code>bash
+$ gem install mailcatcher
+</code></p>
+
+<p>Once installed start the mailcatcher server with the command</p>
+
+<p><code>bash
+$ mailcatcher
+</code></p>
+
+<p>A toy SMTP server will be running on port 1025 catching and displaying emails on HTTP port 1080.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SendGrid + Devise on Heroku]]></title>
+    <link href="http://phatograph.github.io/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku/"/>
+    <updated>2013-05-01T14:41:00+00:00</updated>
+    <id>http://phatograph.github.io/blog-octopress/posts/2013/05/01/sendgrid-devise-on-heroku</id>
+    <content type="html"><![CDATA[<p>Let's say I have a subdomain <a href="http://devsheet.phatograph.com/">devsheet.phatograph.com</a> and I want to configure <strong>SendGrid</strong> and <strong>Devise</strong> in Heroku, here are things to be done.</p>
+
+<h3>production.rb</h3>
+
+<p>Devise documentation and this <a href="http://stackoverflow.com/questions/6019083/setting-up-devise-sendgrid-on-heroku">post</a> tell me to configure <code>config.action_mailer.default_url_options</code> as:</p>
+
+<p><code>ruby production.rb
+config.action_mailer.default_url_options = { :host =&gt; 'devsheet.phatograph.com' }
+</code></p>
+
+<p>And from Heroku Dev Center's <a href="https://devcenter.heroku.com/articles/smtp#sending-email-from-rails">post</a>:</p>
+
+<p><code>ruby production.rb
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address        =&gt; "smtp.sendgrid.net",
+  :port           =&gt; "25",
+  :authentication =&gt; :plain,
+  :user_name      =&gt; ENV['SENDGRID_USERNAME'],
+  :password       =&gt; ENV['SENDGRID_PASSWORD'],
+  :domain         =&gt; ENV['SENDGRID_DOMAIN']
+}
+</code></p>
+
+<h3>devise.rb</h3>
+
+<p>From Devise's predefined configuration:</p>
+
+<p><code>ruby devise.rb
+config.mailer_sender = "noreply@devsheet.phatograph.com"
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

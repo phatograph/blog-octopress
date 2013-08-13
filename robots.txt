@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://phatograph.github.io/blog-octopress/sitemap.xml 
