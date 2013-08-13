@@ -24,6 +24,8 @@ I tried with my own and I couldn't customize Travis for my needs. So I came acro
 
 In order to make this happen, Travis has to hold our GitHub deploy SSH key. The key is needed to be encrypted too. Travis already provides the `travis encrypt` from its gem. Luke Patterson came up with this [gist](https://gist.github.com/lukewpatterson/4242707) to make this easier, allow me to paste a part of it here:
 
+One thing, the SSH must not have the passphrase, Travis won't be able to enter it via the prompt.
+
 ```
 $ base64 --wrap=0 ~/.ssh/id_rsa > ~/.ssh/id_rsa_base64
 $ ENCRYPTION_FILTER="echo \$(echo \"-\")\$(travis encrypt veewee-community/veewee-push \"\$FILE='\`cat $FILE\`'\" | grep secure:)"
@@ -43,6 +45,8 @@ $ travis encrypt
 ```
 
 Hahaha I know this is horrible. Would have come up with more neat solution someday. For now I just paste those line in my terminal, then I have my encrypted key appended in `.travis.yml`.
+
+Another thing to note is this encrypted key is for per-repo. You may to run those `travis encrypt` separately for each repository.
 
 ### The `.travis.yml` itself
 
