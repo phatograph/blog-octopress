@@ -13,7 +13,7 @@ before_script:
 - rake setup_github_pages[$REPO]
 script:
 - bundle exec rake generate
-- yes | bundle exec rake deploy
+- bundle exec rake deploy | yes
 env:
   global:
   - REPO="git@github.com:phatograph/blog-octopress"
