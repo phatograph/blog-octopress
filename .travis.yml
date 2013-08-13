@@ -16,7 +16,7 @@ script:
 - bundle exec rake deploy
 env:
   global:
-  - REPO="git@github.com:phatograph/blog"
+  - REPO="git@github.com:phatograph/blog-octopress"
   - secure: ! 'Sge5rCthtw0QGTfqVGvkVMVP/4RQwwnjM0YYnxeTmImi4cwWQkXDXSuctkKz
 
       FoGzyvzB75Zbu86Yf9yD5M+2QOdYru4DZdq/d17AEnwFnB+ETjxRcnSbzJaK
